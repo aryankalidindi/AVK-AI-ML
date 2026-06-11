@@ -423,7 +423,7 @@ What you should be comfortable with to call yourself good at harness engineering
 
 ## References and Further Reading
 
-### Primary Articles (Show These During the Demo)
+### Primary Articles
 
 | Resource | What It Covers | Link |
 |---|---|---|
@@ -443,31 +443,5 @@ What you should be comfortable with to call yourself good at harness engineering
 | **Anthropic Claude Code docs** | Official documentation | docs.claude.com |
 | **MCP** | Model Context Protocol for tool integration | modelcontextprotocol.io |
 
-### Demo Talking Points
-
-```
-🎤 SUGGESTED FLOW FOR THE DEMO
-
-   1. Start with the MindStudio definition:
-      "A harness is what makes a model do something
-       rather than just say something."
-
-   2. Show the 7-component architecture diagram
-      (from the MBZUAI convergence study)
-
-   3. Open the Faros AI article and point to the
-      fintech example — concrete and relatable
-
-   4. Open ~/.claude after ECC install — show the
-      skills, agents, commands, hooks directories.
-      Say: "This IS a custom harness."
-
-   5. Demo /code-review or /save-session live
-      to show what harness engineering enables
-
-   6. Close with the Big Model vs Big Harness debate
-      — frame your team's choice (invest in harness)
-      as a deliberate one
-```
 
 ---
