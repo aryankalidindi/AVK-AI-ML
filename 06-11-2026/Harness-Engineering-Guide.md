@@ -1,5 +1,5 @@
 # Harness Engineering: A Complete Visual Guide
-
+[[ECC-Visual-Guide[[Claude-Fable-Guide]]]]
 ## Table of Contents
 
 1. [What Is Harness Engineering?](#what-is-harness-engineering)

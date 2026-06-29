@@ -1,6 +1,6 @@
 # Live Speech Translation Rideshare POC — Design
 
-The Live Speech design will be integrated into the [[6-29-2026 Mock RideShare Design]]. However, the Live Speech is the main functionality that we are pursuing and testing.
+The Live Speech design will be integrated into the [[Mock Ride Share Design]] However, the Live Speech is the main functionality that we are pursuing and testing.
 
 **Date:** 2026-06-29
 **Status:** Approved (design phase)

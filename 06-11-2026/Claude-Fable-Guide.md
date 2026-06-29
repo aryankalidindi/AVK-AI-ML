@@ -1,5 +1,7 @@
 # Claude Fable 5: A Complete Visual Guide
 
+[[ECC-Visual-Guide]] [[Harness-Engineering-Guide]]
+
 ## Table of Contents
 
 1. [What Is Claude Fable?](#what-is-claude-fable)

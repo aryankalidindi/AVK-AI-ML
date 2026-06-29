@@ -1,5 +1,6 @@
 # ECC: Everything Claude Code — A Complete Visual Guide
 
+[[Claude-Fable-Guide]] [[Harness-Engineering-Guide]]
 ## Table of Contents
 
 1. [What Is ECC?](#what-is-ecc)

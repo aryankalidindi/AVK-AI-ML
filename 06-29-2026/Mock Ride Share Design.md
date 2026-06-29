@@ -1,8 +1,7 @@
 
 # Mock Rideshare with Auto-Pairing — Design (Phase 1)
 
-The Mock RideShare is just a base so we can test and create the [[6-29-2026 Live Speech Translation Design]].
-what is up
+The Mock RideShare is just a base so we can test and create the [[Live Speech Translation Design]]
 
 
 
