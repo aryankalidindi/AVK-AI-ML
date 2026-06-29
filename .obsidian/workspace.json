@@ -53,10 +53,17 @@
             "id": "30e07cb04020e359",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "canvas",
+              "state": {
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled"
             }
           }
         ],
@@ -133,6 +140,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Untitled.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -142,7 +150,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Untitled"
             }
           },
           {
@@ -151,11 +159,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Untitled.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Untitled"
             }
           },
           {
@@ -193,12 +202,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Untitled.canvas",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Untitled"
             }
           }
         ]
@@ -223,11 +233,12 @@
   },
   "active": "30e07cb04020e359",
   "lastOpenFiles": [
+    "Untitled.base",
+    "Untitled.canvas",
+    "06-29-2026/null.md",
     "06-29-2026/06-29-2026 Notes.md",
     "06-29-2026/Mock Ride Share Design.md",
     "06-29-2026/Live Speech Translation Design.md",
-    "06-29-2026/null.md",
-    "Untitled.canvas",
     "06-11-2026/Harness-Engineering-Guide.md",
     "06-11-2026/ECC-Visual-Guide.md",
     "06-11-2026/Claude-Fable-Guide.md",
