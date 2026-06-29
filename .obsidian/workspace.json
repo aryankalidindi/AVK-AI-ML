@@ -48,26 +48,9 @@
               "icon": "lucide-file",
               "title": "Live Speech Translation Design"
             }
-          },
-          {
-            "id": "30e07cb04020e359",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Untitled.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Untitled"
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -140,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "06-29-2026/Live Speech Translation Design.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,7 +133,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Untitled"
+              "title": "Backlinks for Live Speech Translation Design"
             }
           },
           {
@@ -159,12 +142,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "06-29-2026/Live Speech Translation Design.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Untitled"
+              "title": "Outgoing links from Live Speech Translation Design"
             }
           },
           {
@@ -202,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "06-29-2026/Live Speech Translation Design.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline of Live Speech Translation Design"
             }
           }
         ]
@@ -231,10 +214,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "30e07cb04020e359",
+  "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
-    "Untitled.base",
     "Untitled.canvas",
+    "Untitled.base",
     "06-29-2026/null.md",
     "06-29-2026/06-29-2026 Notes.md",
     "06-29-2026/Mock Ride Share Design.md",
