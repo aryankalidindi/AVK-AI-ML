@@ -1,4 +1,4 @@
-# Live Speech Translation Rideshare POC — Design
+
 
 The Live Speech design will be integrated into the [[Mock Ride Share Design]] However, the Live Speech is the main functionality that we are pursuing and testing.
 
