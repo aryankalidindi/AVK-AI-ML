@@ -25,11 +25,11 @@ found a bug. When i tried to say "no i cannot stop here" this is what returned.
 
 
 
-![[Screenshot 2026-07-01 at 4.17.47 PM.png]]after further review, this may be because i told claude to make a fix while testing this speech translation. will continue to look into it.
+![[Translation Error.png]]after further review, this may be because i told claude to make a fix while testing this speech translation. will continue to look into it.
 
 
 Fixed the issue by pre-loading the speech model.
 
 I have found a new issue that persists in other platforms. When words are translated to different languages, the full depth of the sentence is often lost. Here is an example of this that I encountered during testing. In english, our driver asks "can you pick me up here", to which the driver should respond "where should I pick you up"? In spanish the shorthand may be simply "donde esta" instead of "Dónde debería recogerte". Typically drivers will not use full formal speech as typical of humans anywhere. Instead of saying can you please fetch me a glass of water, people will say "can you get me some water". I think to resolve this we can create a model that will auto-correct the translation depending on the context, that way neither side is confused. Converting slang and such too should be considered. I will paste images of the example below.
 
-![[Screenshot 2026-07-01 at 7.23.11 PM.png]]
+![[Context Translation example.png]]

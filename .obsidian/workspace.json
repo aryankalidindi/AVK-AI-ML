@@ -39,14 +39,10 @@
             "id": "54b0aa7dcf278b50",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "07-01-2026/Mock ride share progress.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Mock ride share progress"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ],
@@ -123,7 +119,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "07-01-2026/Mock ride share progress.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +128,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Mock ride share progress"
+              "title": "Backlinks"
             }
           },
           {
@@ -142,12 +137,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "07-01-2026/Mock ride share progress.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Mock ride share progress"
+              "title": "Outgoing links"
             }
           },
           {
@@ -185,13 +179,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "07-01-2026/Mock ride share progress.md",
+                "file": "07-01-2026/null.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Mock ride share progress"
+              "title": "Outline of null"
             }
           }
         ]
@@ -214,12 +208,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "54b0aa7dcf278b50",
+  "active": "42ce24807551fb1d",
   "lastOpenFiles": [
-    "Screenshot 2026-07-01 at 7.23.11 PM.png",
-    "Screenshot 2026-07-01 at 4.17.47 PM.png",
-    "06-29-2026/Live Speech Translation Design.md",
+    "07-01-2026/null.md",
     "07-01-2026/Mock ride share progress.md",
+    "Context Translation example.png",
+    "Translation Error.png",
+    "06-29-2026/Live Speech Translation Design.md",
     "06-29-2026/06-29-2026 Notes.md",
     "07-01-2026",
     "Untitled.canvas",
