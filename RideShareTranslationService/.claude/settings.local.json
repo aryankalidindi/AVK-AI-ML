@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/aryankalidindi/Desktop/RideShareTranslationService/docs/superpowers/specs)",
+      "Bash(git init *)",
+      "Bash(printf '%s\\\\n' 'node_modules/' 'dist/' '.DS_Store' '*.local' '.env')",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(npm install *)",
+      "Bash(npm test *)",
+      "Bash(timeout 4 node --experimental-strip-types packages/server/src/server.ts)",
+      "Bash(echo \"TSC EXIT $?\")",
+      "Bash(node --help)",
+      "Bash(node --v8-options)",
+      "Bash(npm -w @rst/web run build)",
+      "Bash(npm run *)",
+      "Bash(lsof -nP -iTCP:5173 -sTCP:LISTEN)",
+      "Bash(lsof -nP -iTCP:8787 -sTCP:LISTEN)",
+      "Bash(lsof -nP -iTCP:5174,5175 -sTCP:LISTEN)",
+      "Bash(curl -s -o /dev/null -w \"5173 -> HTTP %{http_code}\\\\n\" http://localhost:5173)",
+      "Bash(curl -s -X POST http://localhost:8787/translate -H 'content-type: application/json' -d '{\"text\":\"halo\",\"sourceLang\":\"id\",\"targetLang\":\"en\"}')",
+      "Bash(git rm *)",
+      "Bash(RELAY_PORT=8801 WEB_PORT=5183 npm run test:e2e)",
+      "Bash(curl -s --max-time 10 \"https://api.mymemory.translated.net/get?q=terima%20kasih&langpair=id|en\")",
+      "Bash(curl -s --max-time 10 \"https://open.er-api.com/v6/latest/USD\")",
+      "Bash(curl -s --max-time 8 \"https://translate.googleapis.com/translate_a/single?client=gtx&sl=id&tl=en&dt=t&q=terima%20kasih\")",
+      "Bash(curl -s -I --max-time 8 -H \"Origin: http://localhost:5173\" \"https://translate.googleapis.com/translate_a/single?client=gtx&sl=id&tl=en&dt=t&q=hi\")",
+      "Bash(curl -s --max-time 8 \"https://api.mymemory.translated.net/get?q=terima%20kasih&langpair=id|en\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\([{'t':m['translation'],'q':m.get\\('quality'\\),'by':m.get\\('created-by'\\)} for m in d.get\\('matches',[]\\)][:4]\\)\")",
+      "Bash(say -o /tmp/speech.aiff \"stop here please\")",
+      "Bash(afconvert -f WAVE -d LEI16@16000 -c 1 /tmp/speech.aiff /tmp/speech.wav)"
+    ]
+  }
+}

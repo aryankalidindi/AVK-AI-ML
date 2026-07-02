@@ -1,0 +1,14 @@
+{
+  "name": "@rst/server",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-strip-types src/server.ts",
+    "start": "node --experimental-strip-types src/server.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.69.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": { "@types/ws": "^8.5.12" }
+}
