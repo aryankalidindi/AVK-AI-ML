@@ -36,7 +36,8 @@ export function bestMatch<T>(target: string, options: T[], label: (option: T) =>
 }
 
 export function parseMoneyToCents(text: string): number | null {
-  const match = text.replace(/,/g, '').match(/\$?\s*(\d+)(?:\.(\d{1,2}))?/);
+  // The $ anchor is load-bearing: "2 for $5.99" must parse as 599, not 200.
+  const match = text.replace(/,/g, '').match(/\$\s*(\d+)(?:\.(\d{1,2}))?/);
   if (!match) return null;
   const dollars = Number(match[1]);
   const cents = Number((match[2] ?? '0').padEnd(2, '0'));

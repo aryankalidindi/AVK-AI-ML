@@ -32,6 +32,10 @@ describe('parseMoneyToCents', () => {
   test('parses "Subtotal: $12.00"', () => expect(parseMoneyToCents('Subtotal: $12.00')).toBe(1200));
   test('parses "$1,024.5" with comma and one decimal', () => expect(parseMoneyToCents('$1,024.5')).toBe(102450));
   test('returns null for no number', () => expect(parseMoneyToCents('Free')).toBeNull());
+  test('anchors on the dollar sign: "2 for $5.99" is 599', () =>
+    expect(parseMoneyToCents('2 for $5.99')).toBe(599));
+  test('returns null for a bare number without $', () =>
+    expect(parseMoneyToCents('20 min')).toBeNull());
 });
 
 describe('formatCents', () => {
