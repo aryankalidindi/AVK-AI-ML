@@ -28,6 +28,25 @@ describe('createParser', () => {
     const args = parse.mock.calls[0][0];
     expect(args.model).toBe('claude-opus-4-8');
     expect(args.messages[0].content).toBe('I want one McChicken');
+    expect(args.system).toContain('spoken food-ordering requests');
+    expect(args.output_config).toBeDefined();
+  });
+
+  test('passes through a non-food parse with empty items', async () => {
+    const nonFoodParse = {
+      mode: 'specific',
+      items: [],
+      restaurant: null,
+      flavorNotes: [],
+      confidence: 0,
+      clarify: null,
+    };
+    const { client } = fakeClient(nonFoodParse);
+    const parseUtterance = createParser(client, 'claude-opus-4-8');
+    const result = await parseUtterance('never mind');
+    expect(result.items).toEqual([]);
+    expect(result.confidence).toBe(0);
+    expect(result.clarify).toBeNull();
   });
 
   test('throws when Claude returns no structured output', async () => {

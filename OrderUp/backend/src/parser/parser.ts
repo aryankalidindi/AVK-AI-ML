@@ -5,12 +5,10 @@ import type { ParsedRequest } from '../types.js';
 
 const parsedRequestSchema = z.object({
   mode: z.enum(['specific', 'category']),
-  items: z
-    .array(z.object({ name: z.string(), quantity: z.number().int() }))
-    .min(1),
+  items: z.array(z.object({ name: z.string(), quantity: z.number().int().positive() })),
   restaurant: z.string().nullable(),
   flavorNotes: z.array(z.string()),
-  confidence: z.number(),
+  confidence: z.number().min(0).max(1),
   clarify: z
     .object({
       question: z.string(),
@@ -33,7 +31,8 @@ Rules:
 - restaurant: the restaurant if stated or strongly implied (a McChicken implies McDonald's); otherwise null.
 - flavorNotes: flavor or style descriptors the user used ("spicy", "crispy", "extra pickles"); otherwise [].
 - confidence: 0 to 1 — how sure you are the order can be built with no follow-up question.
-- clarify: null when mode is "category" or confidence >= 0.8. When mode is "specific" and confidence < 0.8, provide exactly one question with 2-4 choices; each choice's refinedUtterance must be a fully unambiguous restatement of the order (e.g. "one Hot 'n Spicy McChicken from McDonald's").`;
+- clarify: null when mode is "category" or confidence >= 0.8. When mode is "specific" and confidence < 0.8, provide exactly one question with 2-4 choices; each choice's refinedUtterance must be a fully unambiguous restatement of the order (e.g. "one Hot 'n Spicy McChicken from McDonald's").
+- If the utterance is not a food-ordering request at all ("never mind", "cancel that", small talk, nonsense), return mode "specific", items [], restaurant null, flavorNotes [], confidence 0, clarify null. Never invent an item.`;
 
 export type ParseUtterance = (utterance: string) => Promise<ParsedRequest>;
 
