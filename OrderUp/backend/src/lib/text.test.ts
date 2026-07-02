@@ -20,6 +20,11 @@ describe('matchScore / bestMatch', () => {
   test('returns undefined when nothing is close', () => {
     expect(bestMatch('pad thai', ['Big Mac', 'McFlurry'], (o) => o)).toBeUndefined();
   });
+
+  test('prefers the exact item over a longer superset on tie', () => {
+    const options = ["Hot 'n Spicy McChicken", 'McChicken'];
+    expect(bestMatch('mcchicken', options, (o) => o)).toBe('McChicken');
+  });
 });
 
 describe('parseMoneyToCents', () => {

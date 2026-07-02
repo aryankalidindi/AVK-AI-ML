@@ -22,11 +22,14 @@ const MATCH_THRESHOLD = 0.3;
 export function bestMatch<T>(target: string, options: T[], label: (option: T) => string): T | undefined {
   let best: T | undefined;
   let bestScore = 0;
+  let bestWordCount = Number.POSITIVE_INFINITY;
   for (const option of options) {
+    const words = normalize(label(option)).split(' ').filter(Boolean).length;
     const score = matchScore(target, label(option));
-    if (score > bestScore) {
+    if (score > bestScore || (score === bestScore && score > 0 && words < bestWordCount)) {
       best = option;
       bestScore = score;
+      bestWordCount = words;
     }
   }
   return bestScore >= MATCH_THRESHOLD ? best : undefined;
