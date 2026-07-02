@@ -39,14 +39,12 @@
             "id": "54b0aa7dcf278b50",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "07-02-2026/07-02-2026 Notes.md",
-                "mode": "source",
-                "source": false
+                "file": "Context Translation example.png"
               },
-              "icon": "lucide-file",
-              "title": "07-02-2026 Notes"
+              "icon": "lucide-image",
+              "title": "Context Translation example"
             }
           }
         ],
@@ -214,13 +212,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "54b0aa7dcf278b50",
+  "active": "42ce24807551fb1d",
   "lastOpenFiles": [
-    "07-02-2026/Agentic Resource Discovery Framework Overview.png",
+    "New Work Note Template.md",
+    "Translation Error.png",
     "07-02-2026/07-02-2026 Notes.md",
+    "07-02-2026/Agentic Resource Discovery Framework Overview.png",
     "07-02-2026/ARD (Agentic Resource Discovery).md",
     "06-29-2026/06-29-2026 Notes.md",
-    "New Work Note Template.md",
     "Untitled",
     "OrderUp/docs/superpowers/plans/2026-07-02-orderup-backend.md",
     "OrderUp/docs/superpowers/plans",
@@ -236,7 +235,6 @@
     "07-02-2026",
     "Context Translation example.png",
     "07-01-2026/null.md",
-    "Translation Error.png",
     "07-01-2026",
     "Untitled.canvas",
     "Untitled.base",
