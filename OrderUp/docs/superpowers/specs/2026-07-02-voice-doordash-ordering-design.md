@@ -22,6 +22,9 @@ usage (pennies per order).
 - Checkout **never** happens without an explicit Confirm tap.
 - High-confidence requests go straight to the confirmation review;
   low-confidence requests ask a clarifying question first.
+- Vague category requests ("I want a chicken sandwich") trigger discovery:
+  ranked suggestions from nearby restaurants based on rating, location, and
+  flavor fit.
 - Zero subscription cost: free Apple ID signing, self-hosted ntfy push,
   Tailscale free tier.
 
@@ -47,6 +50,9 @@ Three pieces:
     Confirm and Cancel buttons.
   - **Clarify** — a question with tappable choices (e.g., which of two nearby
     McDonald's).
+  - **Suggestions** — ranked cards for vague requests: item name, restaurant,
+    star rating, distance/ETA, price, and a one-line flavor note. Tap a card
+    to order it.
   - **History** — past orders and live status of the in-flight order.
 - **Deep links** via custom URL scheme `orderup://` (e.g.,
   `orderup://review/<orderId>`, `orderup://clarify/<orderId>`).
@@ -61,23 +67,37 @@ Bound to the Tailscale interface only; every request requires the shared
 bearer token.
 
 - **Parser** — one Claude API call converts the utterance into strict JSON:
-  `{ items: [{ name, quantity }], restaurant, confidence }`.
-  Confidence threshold decides: high → build cart immediately;
-  low → send clarification first. Initial threshold: 0.8, configurable,
-  tuned against real utterances during implementation.
+  `{ mode: "specific" | "category", items: [{ name, quantity }], restaurant,
+  flavorNotes, confidence }`.
+  - `specific` + high confidence ("one McChicken") → build cart immediately.
+  - `specific` + low confidence (e.g., two plausible stores or items) → send
+    a clarifying question first.
+  - `category` ("a chicken sandwich") → run discovery and send suggestions.
+  - Initial confidence threshold: 0.8, configurable, tuned against real
+    utterances during implementation. `flavorNotes` captures descriptors
+    ("spicy", "crispy", "nashville hot") for suggestion ranking.
+- **Discovery & ranking** (category requests) — the `discoverItems`
+  automation step searches DoorDash for the dish and scrapes the top ~10
+  candidate items across nearby restaurants (item name, description, price,
+  store rating, distance/ETA). A second Claude call ranks candidates by a
+  blend of store rating, proximity/ETA, and flavor fit against the utterance
+  and `flavorNotes`, returning the top 5 with a one-line reason each. These
+  become the Suggestions screen; the user's pick feeds `buildCart`.
 - **Order state machine** —
-  `received → parsing → clarifying? → building_cart → awaiting_confirmation
-  → placing → placed | failed | cancelled | expired`.
+  `received → parsing → (clarifying | suggesting)? → building_cart
+  → awaiting_confirmation → placing → placed | failed | cancelled | expired`.
   - One in-flight order at a time.
   - `awaiting_confirmation` expires after 10 minutes → `expired`, cart
     abandoned.
 - **DoorDash automation** — Playwright driving a persistent Chromium profile
-  the user logs into once by hand. Four isolated, individually replaceable
+  the user logs into once by hand. Five isolated, individually replaceable
   steps:
   1. `searchRestaurant` — find the store (nearest / order history preferred).
-  2. `matchMenuItem` — fuzzy-match requested items to the live menu.
-  3. `buildCart` — add items, read exact totals off the page. Stops here.
-  4. `placeOrder` — the only step that spends money; runs only after Confirm.
+  2. `discoverItems` — for category requests: search the dish term, scrape
+     top ~10 candidate items across nearby stores with price, rating, ETA.
+  3. `matchMenuItem` — fuzzy-match requested items to the live menu.
+  4. `buildCart` — add items, read exact totals off the page. Stops here.
+  5. `placeOrder` — the only step that spends money; runs only after Confirm.
   - Every step saves a screenshot (audit trail + debugging).
   - **Dry-run mode** (default in development): everything runs except
     `placeOrder`.
@@ -101,9 +121,13 @@ bearer token.
    push: *"McChicken ×1 from McDonald's (Main St) — $8.42 total. Review?"*
    → tap → Review screen → **Confirm** → `placeOrder` runs → "Order placed"
    notification; History shows status.
-4. **Low confidence:** ntfy push with a question → tap → Clarify screen →
-   user picks → cart builds → same review flow as (3).
-5. No confirm within 10 minutes → order expires; user is notified.
+4. **Low confidence (specific):** ntfy push with a question → tap → Clarify
+   screen → user picks → cart builds → same review flow as (3).
+5. **Category request** ("I want a chicken sandwich"): backend runs
+   `discoverItems`, Claude ranks candidates, ntfy push: *"Found 5 chicken
+   sandwiches nearby"* → tap → Suggestions screen (rating, ETA, price,
+   flavor note per card) → pick one → cart builds → same review flow as (3).
+6. No confirm within 10 minutes → order expires; user is notified.
 
 ## Guardrails
 
@@ -131,8 +155,9 @@ bearer token.
 
 ## Testing
 
-- **Unit:** parser output mapping, confidence thresholding, state machine
-  transitions, notifier formatting.
+- **Unit:** parser output mapping (specific vs. category), confidence
+  thresholding, suggestion ranking (given fixed candidate lists), state
+  machine transitions, notifier formatting.
 - **Automation steps:** tested against saved HTML fixtures of DoorDash pages;
   live runs use dry-run mode. No test ever spends money.
 - **iOS:** intent → request plumbing unit-tested; screens verified on device.
@@ -165,6 +190,8 @@ bearer token.
 - Backend host: user's Mac + Tailscale.
 - Ambiguity: ask a clarifying question when confidence is low; go straight
   to confirmation review when confidence is high.
+- Vague category requests get ranked suggestions (rating, location/ETA,
+  flavor fit) from nearby restaurants instead of a plain question.
 - Automation approach: scripted Playwright steps (Approach A), structured so
   individual steps can later fall back to an AI agent.
 - Push: self-hosted ntfy now; APNs-ready notifier interface for later.
