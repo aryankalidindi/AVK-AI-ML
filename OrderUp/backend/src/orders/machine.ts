@@ -18,9 +18,11 @@ export function canTransition(from: OrderState, to: OrderState): boolean {
   return ALLOWED[from].includes(to);
 }
 
+/** `patch` carries stage data (parsed, suggestions, cart, error) — never identity fields. */
 export function transition(order: Order, to: OrderState, patch: Partial<Order> = {}): Order {
   if (!canTransition(order.state, to)) {
-    throw new Error(`Invalid transition: ${order.state} -> ${to}`);
+    const valid = ALLOWED[order.state].join(', ') || 'none (terminal state)';
+    throw new Error(`Invalid transition: ${order.state} -> ${to} (valid: ${valid})`);
   }
   return { ...order, ...patch, state: to, updatedAt: new Date().toISOString() };
 }
