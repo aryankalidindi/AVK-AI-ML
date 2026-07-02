@@ -25,6 +25,24 @@ describe('loadConfig', () => {
     expect(config.DRY_RUN).toBe(false);
   });
 
+  test('parses common false spellings as boolean false', () => {
+    expect(loadConfig({ ...validEnv, DRY_RUN: '0' }).DRY_RUN).toBe(false);
+    expect(loadConfig({ ...validEnv, DRY_RUN: 'FALSE' }).DRY_RUN).toBe(false);
+    expect(loadConfig({ ...validEnv, HEADLESS: '0' }).HEADLESS).toBe(false);
+  });
+
+  test('throws when CONFIDENCE_THRESHOLD is out of range', () => {
+    expect(() => loadConfig({ ...validEnv, CONFIDENCE_THRESHOLD: '1.5' })).toThrow(
+      /CONFIDENCE_THRESHOLD/,
+    );
+  });
+
+  test('throws a clear error when ANTHROPIC_API_KEY is missing', () => {
+    expect(() => loadConfig({ AUTH_TOKEN: 'a-very-long-random-token' })).toThrow(
+      /ANTHROPIC_API_KEY/,
+    );
+  });
+
   test('coerces numeric strings', () => {
     const config = loadConfig({ ...validEnv, PORT: '9000', MAX_ORDER_CENTS: '2500' });
     expect(config.PORT).toBe(9000);

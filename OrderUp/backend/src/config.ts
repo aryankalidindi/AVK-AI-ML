@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
+const FALSE_STRINGS = new Set(['false', '0', 'no', 'off']);
+
 const booleanString = (defaultValue: string) =>
-  z.string().default(defaultValue).transform((value) => value !== 'false');
+  z.string().default(defaultValue).transform((value) => !FALSE_STRINGS.has(value.toLowerCase()));
 
 const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(4741),
