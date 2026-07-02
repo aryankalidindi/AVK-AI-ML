@@ -216,6 +216,7 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OrderUp/backend/src/doordash/automation.ts",
     "OrderUp/backend/src/doordash/extract.ts",
     "OrderUp/backend/src/doordash/extract.test.ts",
     "OrderUp/backend/src/doordash/browser.ts",
@@ -226,7 +227,6 @@
     "OrderUp/backend/src/notify/notifier.ts",
     "OrderUp/backend/src/notify",
     "OrderUp/backend/src/ranking/ranker.ts",
-    "OrderUp/backend/src/ranking/ranker.test.ts",
     "07-02-2026/Agentic Resource Discovery Framework Overview.png",
     "07-02-2026/fable in CLI.png",
     "07-02-2026/07-02-2026 Notes.md",
