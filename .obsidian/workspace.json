@@ -216,6 +216,9 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OrderUp/backend/src/config.ts",
+    "OrderUp/backend/src/config.test.ts",
+    "OrderUp/backend/src",
     "07-02-2026/Agentic Resource Discovery Framework Overview.png",
     "07-02-2026/fable in CLI.png",
     "07-02-2026/07-02-2026 Notes.md",
@@ -231,8 +234,6 @@
     "OrderUp/backend/node_modules/vitest/suite.d.ts",
     "OrderUp/backend/node_modules/vitest/snapshot.d.ts",
     "OrderUp/backend/node_modules/vitest/runners.d.ts",
-    "OrderUp/backend/node_modules/vitest/reporters.d.ts",
-    "OrderUp/backend/node_modules/vitest/optional-types.d.ts",
     "OrderUp/backend/node_modules/vitest/README.md",
     "OrderUp/backend/node_modules/vitest/LICENSE.md",
     "OrderUp/backend/node_modules/tsx/README.md",
@@ -261,7 +262,6 @@
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-nightly-Cp5nfeDT.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-beta-k3eOH_eK.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-1bWoP6pv.svg",
-    "OrderUp/backend/node_modules/playwright-core/lib/tools/dashboard/appIcon.png",
     "Untitled.canvas"
   ]
 }
