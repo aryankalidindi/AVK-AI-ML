@@ -39,12 +39,14 @@
             "id": "54b0aa7dcf278b50",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Context Translation example.png"
+                "file": "07-02-2026/07-02-2026 Notes.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Context Translation example"
+              "icon": "lucide-file",
+              "title": "07-02-2026 Notes"
             }
           }
         ],
@@ -212,8 +214,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "42ce24807551fb1d",
+  "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "07-02-2026/Agentic Resource Discovery Framework Overview.png",
+    "07-02-2026/fable in CLI.png",
+    "07-02-2026/07-02-2026 Notes.md",
+    "Context Translation example.png",
     "OrderUp/backend/node_modules/@esbuild/darwin-arm64/package.json",
     "OrderUp/backend/node_modules/@esbuild/darwin-arm64/README.md",
     "OrderUp/backend/node_modules/typescript/ThirdPartyNoticeText.txt",
@@ -227,7 +233,6 @@
     "OrderUp/backend/node_modules/vitest/runners.d.ts",
     "OrderUp/backend/node_modules/vitest/reporters.d.ts",
     "OrderUp/backend/node_modules/vitest/optional-types.d.ts",
-    "OrderUp/backend/node_modules/vitest/node.d.ts",
     "OrderUp/backend/node_modules/vitest/README.md",
     "OrderUp/backend/node_modules/vitest/LICENSE.md",
     "OrderUp/backend/node_modules/tsx/README.md",
@@ -249,7 +254,6 @@
     "OrderUp/backend/node_modules/@rolldown/binding-darwin-arm64/README.md",
     "OrderUp/backend/node_modules/postcss/README.md",
     "OrderUp/backend/node_modules/@vitest/expect/README.md",
-    "OrderUp/backend/node_modules/@vitest/pretty-format/README.md",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/safari-na3_-uQk.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/traceViewer/playwright-logo.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/recorder/playwright-logo.svg",
@@ -258,8 +262,6 @@
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-beta-k3eOH_eK.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-1bWoP6pv.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/tools/dashboard/appIcon.png",
-    "OrderUp/backend/node_modules/playwright-core/lib/server/chromium/appIcon.png",
-    "OrderUp/backend/node_modules/fastify/docs/resources/encapsulation_context.svg",
     "Untitled.canvas"
   ]
 }
