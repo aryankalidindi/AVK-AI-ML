@@ -1,4 +1,4 @@
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, describe, expect, test } from 'vitest';
@@ -49,5 +49,12 @@ describe('OrderStore', () => {
 
     const reloaded = new OrderStore(file);
     expect(reloaded.get(order.id)?.state).toBe('parsing');
+  });
+
+  test('fails loudly on a corrupted order file', () => {
+    dir = mkdtempSync(join(tmpdir(), 'orderup-'));
+    const file = join(dir, 'orders.json');
+    writeFileSync(file, '{not json');
+    expect(() => new OrderStore(file)).toThrow(/corrupted/);
   });
 });

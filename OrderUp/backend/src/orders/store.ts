@@ -10,7 +10,16 @@ export class OrderStore {
 
   constructor(private filePath?: string) {
     if (filePath && existsSync(filePath)) {
-      const saved = JSON.parse(readFileSync(filePath, 'utf8')) as Order[];
+      let saved: Order[];
+      try {
+        saved = JSON.parse(readFileSync(filePath, 'utf8')) as Order[];
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        // Fail loudly rather than silently wiping order history on the next persist.
+        throw new Error(
+          `Order file ${filePath} is corrupted (${message}). Fix or remove it, then restart.`,
+        );
+      }
       for (const order of saved) this.orders.set(order.id, order);
     }
   }
