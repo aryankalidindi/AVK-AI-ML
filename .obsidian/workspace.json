@@ -214,6 +214,10 @@
   },
   "active": "42ce24807551fb1d",
   "lastOpenFiles": [
+    "OrderUp/backend/vitest.config.ts",
+    "OrderUp/backend/tsconfig.json",
+    "OrderUp/backend/package.json",
+    "OrderUp/backend",
     "New Work Note Template.md",
     "Translation Error.png",
     "07-02-2026/07-02-2026 Notes.md",
@@ -235,14 +239,11 @@
     "07-02-2026",
     "Context Translation example.png",
     "07-01-2026/null.md",
-    "07-01-2026",
     "Untitled.canvas",
-    "Untitled.base",
     "06-29-2026/null.md",
     "06-11-2026/Harness-Engineering-Guide.md",
     "06-11-2026/ECC-Visual-Guide.md",
     "06-11-2026/Claude-Fable-Guide.md",
-    "06-29-2026/hi.md",
-    "06-29-2026"
+    "06-29-2026/hi.md"
   ]
 }
