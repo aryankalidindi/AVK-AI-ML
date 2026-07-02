@@ -33,8 +33,13 @@ export function createRanker(client: Anthropic, model: string): RankCandidates {
       throw new Error('Ranker returned no structured output');
     }
     const byId = new Map(candidates.map((candidate) => [candidate.id, candidate]));
+    const seen = new Set<string>();
     return response.parsed_output.ranking
-      .filter((entry) => byId.has(entry.id))
+      .filter((entry) => {
+        if (!byId.has(entry.id) || seen.has(entry.id)) return false;
+        seen.add(entry.id);
+        return true;
+      })
       .map((entry) => ({ ...byId.get(entry.id)!, reason: entry.reason }));
   };
 }
