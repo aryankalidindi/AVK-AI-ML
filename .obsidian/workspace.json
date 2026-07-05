@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "07-02-2026/07-02-2026 Notes.md",
+                "file": "07-05-2026/OrderUp continued.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07-02-2026 Notes"
+              "title": "OrderUp continued"
             }
           }
         ],
@@ -216,6 +216,9 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "07-02-2026/07-02-2026 Notes.md",
+    "07-05-2026/OrderUp continued.md",
+    "07-05-2026",
     "OrderUp/backend/src/llm/gemini.ts",
     "OrderUp/backend/src/llm/gemini.test.ts",
     "OrderUp/backend/src/llm",
@@ -226,11 +229,8 @@
     "OrderUp/backend/src/server.ts",
     "OrderUp/backend/src/server.ts.tmp.87520.970adb4da8ce",
     "OrderUp/backend/src/server.test.ts",
-    "OrderUp/backend/src/orchestrator.ts",
-    "OrderUp/backend/src/orchestrator.test.ts",
     "07-02-2026/Agentic Resource Discovery Framework Overview.png",
     "07-02-2026/fable in CLI.png",
-    "07-02-2026/07-02-2026 Notes.md",
     "Context Translation example.png",
     "OrderUp/backend/node_modules/@esbuild/darwin-arm64/README.md",
     "OrderUp/backend/node_modules/typescript/SECURITY.md",

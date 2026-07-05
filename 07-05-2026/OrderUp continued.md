@@ -1,0 +1,1 @@
+the code is mostly finished, now testing OrderUp's real life functionality. The ntfy app works, currently testing the actual doordash login.
