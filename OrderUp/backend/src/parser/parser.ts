@@ -3,7 +3,7 @@ import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import { z } from 'zod';
 import type { ParsedRequest } from '../types.js';
 
-const parsedRequestSchema = z.object({
+export const parsedRequestSchema = z.object({
   mode: z.enum(['specific', 'category']),
   items: z.array(z.object({ name: z.string(), quantity: z.number().int().positive() })),
   restaurant: z.string().nullable(),
@@ -20,7 +20,7 @@ const parsedRequestSchema = z.object({
     .nullable(),
 });
 
-const SYSTEM_PROMPT = `You parse spoken food-ordering requests for a personal assistant that orders through DoorDash.
+export const PARSER_SYSTEM_PROMPT = `You parse spoken food-ordering requests for a personal assistant that orders through DoorDash.
 
 Classify the request:
 - mode "specific": the user named a concrete menu item and/or restaurant ("one McChicken", "two Big Macs from McDonald's").
@@ -41,7 +41,7 @@ export function createParser(client: Anthropic, model: string): ParseUtterance {
     const response = await client.messages.parse({
       model,
       max_tokens: 2048,
-      system: SYSTEM_PROMPT,
+      system: PARSER_SYSTEM_PROMPT,
       messages: [{ role: 'user', content: utterance }],
       output_config: { format: zodOutputFormat(parsedRequestSchema) },
     });

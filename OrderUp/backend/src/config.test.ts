@@ -48,4 +48,23 @@ describe('loadConfig', () => {
     expect(config.PORT).toBe(9000);
     expect(config.MAX_ORDER_CENTS).toBe(2500);
   });
+
+  test('gemini provider requires GEMINI_API_KEY but not ANTHROPIC_API_KEY', () => {
+    expect(() =>
+      loadConfig({ AUTH_TOKEN: 'a-very-long-random-token', LLM_PROVIDER: 'gemini' }),
+    ).toThrow(/GEMINI_API_KEY/);
+
+    const config = loadConfig({
+      AUTH_TOKEN: 'a-very-long-random-token',
+      LLM_PROVIDER: 'gemini',
+      GEMINI_API_KEY: 'AIza-test',
+    });
+    expect(config.LLM_PROVIDER).toBe('gemini');
+    expect(config.GEMINI_MODEL).toBe('gemini-2.5-flash');
+    expect(config.ANTHROPIC_API_KEY).toBeUndefined();
+  });
+
+  test('rejects an unknown LLM_PROVIDER', () => {
+    expect(() => loadConfig({ ...validEnv, LLM_PROVIDER: 'openai' })).toThrow(/LLM_PROVIDER/);
+  });
 });

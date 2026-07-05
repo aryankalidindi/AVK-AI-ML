@@ -8,7 +8,9 @@ Spec: `../docs/superpowers/specs/2026-07-02-voice-doordash-ordering-design.md`
 ## Setup
 
 1. `npm install && npx playwright install chromium`
-2. `cp .env.example .env` — set `AUTH_TOKEN` (long random string) and `ANTHROPIC_API_KEY`
+2. `cp .env.example .env` — set `AUTH_TOKEN` (long random string) and an LLM key:
+   - **Free:** `LLM_PROVIDER=gemini` + `GEMINI_API_KEY` from https://aistudio.google.com/apikey (no card needed)
+   - Or: `LLM_PROVIDER=anthropic` + `ANTHROPIC_API_KEY` (paid, console.anthropic.com)
 3. `brew install ntfy && ntfy serve --listen-http :8090` (subscribe to topic `orderup` in the ntfy app over Tailscale)
 4. `npm run login` — log in to DoorDash once; the browser profile persists
 5. `npm run dev`
