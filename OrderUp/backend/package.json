@@ -7,8 +7,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "login": "tsx scripts/login.ts",
+    "dev": "tsx --env-file-if-exists=.env src/index.ts",
+    "login": "tsx --env-file-if-exists=.env scripts/login.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
