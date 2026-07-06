@@ -118,6 +118,12 @@ Total is 37.8k tokens and it took around 2 minutes.
 
 Step 9: this took about 6 minutes for some reason, and jumped from 37.8k tokens to 42.4k which is the most since the initial step.
 
-Sidenote: I asked it to tell me where the file is located and it decided now was a good time to compact the history. It is taking a decent amount of time to compact. I will stop here for now.
+Sidenote: I asked it to tell me where the file is located and it decided now was a good time to compact the history. It is taking a decent amount of time to compact. I will stop here for now. This somehow took the tokens down to 37k from the 42k.
+
+⚙️  /save
+
+(^_^)v Conversation snapshot saved to: /Users/aryankalidindi/.hermes/sessions/saved/hermes_conversation_20260706_180819.json
+
+       Resume the live session with: hermes --resume 20260706_170858_8556a8
 
 
