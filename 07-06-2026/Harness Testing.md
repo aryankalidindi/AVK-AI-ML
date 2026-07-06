@@ -88,3 +88,7 @@ Build a responsive weather app that demonstrates architecture, API integration, 
     
 
 **Deliverable:** A production-ready application with a clean folder structure, setup instructions, and a polished user experience.
+
+
+
+
