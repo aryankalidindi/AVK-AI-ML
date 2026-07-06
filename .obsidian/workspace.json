@@ -216,6 +216,8 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OrderUp/backend/screenshots/2026-07-06T14-16-47-763Z-searchRestaurant-failed.png",
+    "OrderUp/backend/screenshots",
     "07-06-2026/OrderUp Monday 7/6",
     "07-06-2026/OrderUp Monday 7",
     "07-05-2026/OrderUp continued.md",
@@ -229,8 +231,6 @@
     "OrderUp/backend/src/llm",
     "OrderUp/backend/README.md",
     "OrderUp/backend/scripts/login.ts",
-    "OrderUp/backend/scripts",
-    "OrderUp/backend/src/index.ts",
     "07-02-2026/Agentic Resource Discovery Framework Overview.png",
     "07-02-2026/fable in CLI.png",
     "Context Translation example.png",
