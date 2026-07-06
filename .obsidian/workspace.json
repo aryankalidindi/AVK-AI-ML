@@ -216,6 +216,7 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OrderUp/backend/screenshots/2026-07-06T15-12-46-336Z-readCart-failed.png",
     "OrderUp/backend/screenshots/2026-07-06T15-11-33-864Z-searchRestaurant-ok.png",
     "OrderUp/backend/screenshots/2026-07-06T15-08-41-047Z-searchRestaurant-ok.png",
     "OrderUp/backend/screenshots/2026-07-06T14-35-04-885Z-matchMenuItem-failed.png",
@@ -261,7 +262,6 @@
     "OrderUp/backend/node_modules/esbuild/README.md",
     "OrderUp/backend/node_modules/esbuild/LICENSE.md",
     "OrderUp/backend/node_modules/undici-types/README.md",
-    "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/safari-na3_-uQk.svg",
     "Untitled.canvas"
   ]
 }
