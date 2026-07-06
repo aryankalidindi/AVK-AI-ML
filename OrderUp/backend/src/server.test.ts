@@ -31,12 +31,21 @@ function makeApp() {
     rank: vi.fn(),
     notifier: { send: vi.fn().mockResolvedValue(undefined) },
     automation: {
+      openStoreForSpecific: vi.fn().mockResolvedValue(undefined),
+      openStoreForCandidate: vi.fn().mockResolvedValue(undefined),
+      readCart: vi.fn().mockResolvedValue(cart),
       buildCartForSpecific: vi.fn().mockResolvedValue(cart),
       discover: vi.fn(),
       buildCartForCandidate: vi.fn(),
       placeOrder: vi.fn().mockResolvedValue(undefined),
     },
-    config: { CONFIDENCE_THRESHOLD: 0.8, MAX_ORDER_CENTS: 5000, DRY_RUN: true, EXPIRY_MINUTES: 10 },
+    config: {
+      CART_MODE: 'auto',
+      CONFIDENCE_THRESHOLD: 0.8,
+      MAX_ORDER_CENTS: 5000,
+      DRY_RUN: true,
+      EXPIRY_MINUTES: 10,
+    },
   };
   const orchestrator = new Orchestrator(deps);
   const app = buildServer({ orchestrator, store, authToken: TOKEN });

@@ -191,14 +191,11 @@ describe('Orchestrator', () => {
 
   test('automation failure lands in failed with the step error and a notification', async () => {
     const deps = makeDeps({
-      automation: {
+      automation: makeAutomation({
         buildCartForSpecific: vi
           .fn()
           .mockRejectedValue(new Error('matchMenuItem: No menu item matching "McChicken"')),
-        discover: vi.fn(),
-        buildCartForCandidate: vi.fn(),
-        placeOrder: vi.fn(),
-      },
+      }),
     });
     const orchestrator = new Orchestrator(deps);
     const order = orchestrator.startOrder('one mcchicken');
@@ -231,5 +228,64 @@ describe('Orchestrator', () => {
 
     await orchestrator.cancel(order.id);
     expect(deps.store.get(order.id)!.state).toBe('cancelled');
+  });
+
+  describe('manual cart mode', () => {
+    test('specific order opens the store and waits in building_cart', async () => {
+      const deps = makeDeps({ config: autoConfig({ CART_MODE: 'manual' }) });
+      const orchestrator = new Orchestrator(deps);
+      const order = orchestrator.startOrder('one mcchicken');
+      await orchestrator.settle();
+
+      const state = deps.store.get(order.id)!;
+      expect(state.state).toBe('building_cart');
+      expect(deps.automation.openStoreForSpecific).toHaveBeenCalled();
+      expect(deps.automation.buildCartForSpecific).not.toHaveBeenCalled();
+      expect(deps.notifier.send).toHaveBeenCalledWith(
+        expect.objectContaining({ deepLink: `orderup://build/${order.id}` }),
+      );
+    });
+
+    test('markCartReady reads the cart and advances to awaiting_confirmation', async () => {
+      const deps = makeDeps({ config: autoConfig({ CART_MODE: 'manual' }) });
+      const orchestrator = new Orchestrator(deps);
+      const order = orchestrator.startOrder('one mcchicken');
+      await orchestrator.settle();
+
+      await orchestrator.markCartReady(order.id);
+      const state = deps.store.get(order.id)!;
+      expect(state.state).toBe('awaiting_confirmation');
+      expect(state.cart?.totalCents).toBe(842);
+      expect(deps.automation.readCart).toHaveBeenCalled();
+    });
+
+    test('markCartReady still advances when the cart cannot be read', async () => {
+      const deps = makeDeps({
+        config: autoConfig({ CART_MODE: 'manual' }),
+        automation: makeAutomation({ readCart: vi.fn().mockRejectedValue(new Error('no cart selectors')) }),
+      });
+      const orchestrator = new Orchestrator(deps);
+      const order = orchestrator.startOrder('one mcchicken');
+      await orchestrator.settle();
+
+      await orchestrator.markCartReady(order.id);
+      const state = deps.store.get(order.id)!;
+      expect(state.state).toBe('awaiting_confirmation');
+      expect(state.cart).toBeUndefined();
+      expect(deps.notifier.send).toHaveBeenCalledWith(
+        expect.objectContaining({ title: expect.stringMatching(/Cart ready/) }),
+      );
+    });
+
+    test('confirm places a manual order after cart-ready (dry run)', async () => {
+      const deps = makeDeps({ config: autoConfig({ CART_MODE: 'manual' }) });
+      const orchestrator = new Orchestrator(deps);
+      const order = orchestrator.startOrder('one mcchicken');
+      await orchestrator.settle();
+      await orchestrator.markCartReady(order.id);
+
+      await orchestrator.confirm(order.id);
+      expect(deps.store.get(order.id)!.state).toBe('placed');
+    });
   });
 });
