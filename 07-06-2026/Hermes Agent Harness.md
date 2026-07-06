@@ -55,3 +55,7 @@ I will feed these one at a time.
 
 
 Step 1: Used about 21.2k tokens. Took around 3m to produce.
+
+Step 2: Used about 1.7k tokens. Took around 2m to produce.
+
+Step 3:
