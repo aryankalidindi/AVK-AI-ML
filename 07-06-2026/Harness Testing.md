@@ -54,8 +54,6 @@ Build a responsive weather app that demonstrates architecture, API integration, 
     
 - Responsive UI
     
-- Environment variables for API keys
-    
 - Clean, reusable component structure
     
 
