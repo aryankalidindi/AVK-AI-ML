@@ -30,8 +30,22 @@ Spec: `../docs/superpowers/specs/2026-07-02-voice-doordash-ordering-design.md`
 | `POST /orders {utterance}` | Start an order (202; one in flight at a time) |
 | `GET /orders` / `GET /orders/:id` | History / status polling |
 | `POST /orders/:id/choose {choiceId}` | Answer a clarify question or pick a suggestion |
+| `POST /orders/:id/cart-ready` | Manual mode: you finished tapping items in the browser |
 | `POST /orders/:id/confirm {acknowledgeOverCap?}` | Place the order (dry-run aware) |
 | `POST /orders/:id/cancel` | Cancel |
+
+## Cart mode
+
+`CART_MODE=manual` (default): the tool parses your voice and auto-opens the
+correct store in the browser, then you tap the items yourself and call
+`/cart-ready`; the tool reads the cart if it can, notifies you to review, and
+handles confirm. This sidesteps DoorDash's fuzzy/virtualized menu, which makes
+fully-scripted item selection unreliable.
+
+`CART_MODE=auto`: fully scripted add-to-cart. The framework is intact
+(`buildCartForSpecific` / `buildCartForCandidate` in `src/doordash/automation.ts`),
+but the menu-item and cart selectors still need to be solved against the live
+site before it works end-to-end. Flip to `auto` once they are.
 
 ## When DoorDash changes their site
 

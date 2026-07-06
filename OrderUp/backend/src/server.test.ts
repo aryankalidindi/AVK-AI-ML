@@ -171,6 +171,21 @@ describe('HTTP server', () => {
     expect(res.json().error).toMatch(/spending cap/);
   });
 
+  test('POST /orders/:id/cart-ready is 409 unless the order is building_cart', async () => {
+    const { app, orchestrator } = makeApp();
+    const created = await app.inject({
+      method: 'POST',
+      url: '/orders',
+      headers: auth,
+      payload: { utterance: 'one mcchicken' },
+    });
+    const id = created.json().data.id;
+    await orchestrator.settle();
+    // In auto mode the order is already awaiting_confirmation, not building_cart.
+    const res = await app.inject({ method: 'POST', url: `/orders/${id}/cart-ready`, headers: auth });
+    expect(res.statusCode).toBe(409);
+  });
+
   test('POST /orders/:id/cancel cancels an awaiting order', async () => {
     const { app, store, orchestrator } = makeApp();
     const created = await app.inject({
