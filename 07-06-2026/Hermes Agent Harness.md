@@ -58,4 +58,8 @@ Step 1: Used about 21.2k tokens. Took around 3m to produce.
 
 Step 2: Used about 1.7k tokens. Took around 2m to produce.
 
-Step 3:
+Sidenote: I've noticed that the token tracker in hermes sometimes adjusts itself to lower token usage than previously reported when executing a prompt. I wonder if it is predicting the token usage or if something else is going on.
+
+Step 3: We are 24.8k tokens total, so it used about 1.9k tokens. It took around 3m to produce.
+
+Step 4: TRAP
