@@ -47,7 +47,7 @@ Build a responsive weather app that demonstrates architecture, API integration, 
 - Current weather
     
 - 5–7 day forecast
-    
+    /mode
 - Hourly forecast
     
 - Loading & error states
