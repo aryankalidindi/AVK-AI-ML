@@ -33,12 +33,19 @@ await page.waitForTimeout(6000);
 let searchTarget = restaurant;
 if (item) {
   // Reproduce searchRestaurant's click, then inspect the menu for the item.
-  await page.locator(SEL.storeCard).filter({ hasText: nameRegex(restaurant) }).first().click();
-  await page.waitForLoadState('domcontentloaded');
+  const link = page.locator(SEL.storeCard).filter({ hasText: nameRegex(restaurant) }).first();
+  const href = await link.getAttribute('href');
+  console.error(`[inspect] clicking store link href=${href}`);
+  await link.click();
+  await page.waitForURL('**/store/**', { timeout: 20000 }).catch(() => {});
   await page.waitForTimeout(6000);
   searchTarget = item;
-  console.error(`[inspect] on menu page: ${page.url()}`);
+  console.error(`[inspect] landed on: ${page.url()}`);
 }
+
+// tsx/esbuild wraps functions with a __name helper that doesn't exist in the
+// browser; define it as a no-op before evaluating any transformed function.
+await page.evaluate('globalThis.__name = globalThis.__name || function (f) { return f; };');
 
 const report = await page.evaluate((searchStr: string) => {
   const out: Record<string, unknown> = {};
