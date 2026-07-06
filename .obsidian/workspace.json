@@ -216,6 +216,9 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OpenCodeHarnessTest",
+    "OpenCode Harness Test",
+    "untitled folder",
     "AGENTS.md",
     "07-06-2026/OrderUp Monday 7/6/2026.md",
     "07-06-2026/Harness Testing.md",
@@ -237,8 +240,6 @@
     "07-02-2026/07-02-2026 Notes.md",
     "07-05-2026",
     "OrderUp/backend/src/llm/gemini.ts",
-    "OrderUp/backend/src/llm/gemini.test.ts",
-    "OrderUp/backend/src/llm",
     "OrderUp/backend/README.md",
     "07-02-2026/Agentic Resource Discovery Framework Overview.png",
     "07-02-2026/fable in CLI.png",
@@ -261,7 +262,6 @@
     "OrderUp/backend/node_modules/@types/node/README.md",
     "OrderUp/backend/node_modules/@vitest/mocker/README.md",
     "OrderUp/backend/node_modules/esbuild/README.md",
-    "OrderUp/backend/node_modules/esbuild/LICENSE.md",
     "Untitled.canvas"
   ]
 }
