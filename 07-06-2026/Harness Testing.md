@@ -10,6 +10,10 @@ https://github.com/tinyhumansai/openhuman -
 
 https://github.com/nousresearch/hermes-agent
 
+https://kilo.ai/ , https://github.com/kilo-org/kilocode
+
+
+
 
 
 
