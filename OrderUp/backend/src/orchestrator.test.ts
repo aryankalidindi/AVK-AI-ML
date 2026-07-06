@@ -50,19 +50,38 @@ const candidates: Candidate[] = [
   },
 ];
 
+function autoConfig(over: Partial<OrchestratorDeps['config']> = {}): OrchestratorDeps['config'] {
+  return {
+    CART_MODE: 'auto',
+    CONFIDENCE_THRESHOLD: 0.8,
+    MAX_ORDER_CENTS: 5000,
+    DRY_RUN: true,
+    EXPIRY_MINUTES: 10,
+    ...over,
+  };
+}
+
+function makeAutomation(over: Partial<OrchestratorDeps['automation']> = {}): OrchestratorDeps['automation'] {
+  return {
+    openStoreForSpecific: vi.fn().mockResolvedValue(undefined),
+    openStoreForCandidate: vi.fn().mockResolvedValue(undefined),
+    readCart: vi.fn().mockResolvedValue(cart),
+    buildCartForSpecific: vi.fn().mockResolvedValue(cart),
+    discover: vi.fn().mockResolvedValue(candidates),
+    buildCartForCandidate: vi.fn().mockResolvedValue(cart),
+    placeOrder: vi.fn().mockResolvedValue(undefined),
+    ...over,
+  };
+}
+
 function makeDeps(overrides: Partial<OrchestratorDeps> = {}): OrchestratorDeps {
   return {
     store: new OrderStore(),
     parse: vi.fn().mockResolvedValue(specific(0.95)),
     rank: vi.fn().mockResolvedValue(candidates.map((c) => ({ ...c, reason: 'Best fit.' }))),
     notifier: { send: vi.fn().mockResolvedValue(undefined) },
-    automation: {
-      buildCartForSpecific: vi.fn().mockResolvedValue(cart),
-      discover: vi.fn().mockResolvedValue(candidates),
-      buildCartForCandidate: vi.fn().mockResolvedValue(cart),
-      placeOrder: vi.fn().mockResolvedValue(undefined),
-    },
-    config: { CONFIDENCE_THRESHOLD: 0.8, MAX_ORDER_CENTS: 5000, DRY_RUN: true, EXPIRY_MINUTES: 10 },
+    automation: makeAutomation(),
+    config: autoConfig(),
     ...overrides,
   };
 }
@@ -145,9 +164,7 @@ describe('Orchestrator', () => {
   });
 
   test('confirm in live mode calls placeOrder', async () => {
-    const deps = makeDeps({
-      config: { CONFIDENCE_THRESHOLD: 0.8, MAX_ORDER_CENTS: 5000, DRY_RUN: false, EXPIRY_MINUTES: 10 },
-    });
+    const deps = makeDeps({ config: autoConfig({ DRY_RUN: false }) });
     const orchestrator = new Orchestrator(deps);
     const order = orchestrator.startOrder('one mcchicken');
     await orchestrator.settle();
@@ -160,12 +177,7 @@ describe('Orchestrator', () => {
   test('confirm requires acknowledgement when the cart is over the cap', async () => {
     const bigCart = { ...cart, totalCents: 9900 };
     const deps = makeDeps({
-      automation: {
-        buildCartForSpecific: vi.fn().mockResolvedValue(bigCart),
-        discover: vi.fn(),
-        buildCartForCandidate: vi.fn(),
-        placeOrder: vi.fn(),
-      },
+      automation: makeAutomation({ buildCartForSpecific: vi.fn().mockResolvedValue(bigCart) }),
     });
     const orchestrator = new Orchestrator(deps);
     const order = orchestrator.startOrder('feast');

@@ -64,6 +64,17 @@ export function buildServer({ orchestrator, store, authToken }: ServerDeps): Fas
     return reply.code(202).send(envelope(order));
   });
 
+  app.post('/orders/:id/cart-ready', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const order = store.get(id);
+    if (!order) return reply.code(404).send(failure('order not found'));
+    if (order.state !== 'building_cart') {
+      return reply.code(409).send(failure(`order is not building a cart (state: ${order.state})`));
+    }
+    orchestrator.track(orchestrator.markCartReady(id));
+    return reply.code(202).send(envelope(order));
+  });
+
   app.post('/orders/:id/confirm', async (request, reply) => {
     const { id } = request.params as { id: string };
     const body = confirmBody.safeParse(request.body ?? {});

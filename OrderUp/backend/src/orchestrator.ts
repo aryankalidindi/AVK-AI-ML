@@ -73,6 +73,11 @@ export class Orchestrator {
         });
         return order;
       }
+      if (config.CART_MODE === 'manual') {
+        return await this.openStoreManually(orderId, { parsed }, () =>
+          this.deps.automation.openStoreForSpecific(parsed),
+        );
+      }
       return await this.buildCart(orderId, { parsed }, () =>
         this.deps.automation.buildCartForSpecific(parsed),
       );
@@ -82,7 +87,7 @@ export class Orchestrator {
   }
 
   async handleChoice(orderId: string, choiceId: string): Promise<Order> {
-    const { store } = this.deps;
+    const { store, config } = this.deps;
     const order = store.get(orderId);
     if (!order) throw new Error(`Unknown order: ${orderId}`);
     try {
@@ -91,6 +96,11 @@ export class Orchestrator {
         if (!choice) throw new Error(`Unknown choice: ${choiceId}`);
         store.advance(orderId, 'parsing');
         const parsed = await this.deps.parse(choice.refinedUtterance);
+        if (config.CART_MODE === 'manual') {
+          return await this.openStoreManually(orderId, { parsed }, () =>
+            this.deps.automation.openStoreForSpecific(parsed),
+          );
+        }
         return await this.buildCart(orderId, { parsed }, () =>
           this.deps.automation.buildCartForSpecific(parsed),
         );
@@ -99,6 +109,11 @@ export class Orchestrator {
         const suggestion = order.suggestions?.find((s) => s.id === choiceId);
         if (!suggestion) throw new Error(`Unknown suggestion: ${choiceId}`);
         const quantity = order.parsed?.items[0]?.quantity ?? 1;
+        if (config.CART_MODE === 'manual') {
+          return await this.openStoreManually(orderId, {}, () =>
+            this.deps.automation.openStoreForCandidate(suggestion),
+          );
+        }
         return await this.buildCart(orderId, {}, () =>
           this.deps.automation.buildCartForCandidate(suggestion, quantity),
         );
@@ -107,6 +122,59 @@ export class Orchestrator {
     } catch (error) {
       return this.fail(orderId, error);
     }
+  }
+
+  /**
+   * Manual mode: navigate to the store and hand off to the user to tap items in
+   * the browser. The order waits in `building_cart` until markCartReady().
+   */
+  private async openStoreManually(
+    orderId: string,
+    patch: Partial<Order>,
+    open: () => Promise<void>,
+  ): Promise<Order> {
+    this.deps.store.advance(orderId, 'building_cart', { ...patch, expiresAt: this.expiry() });
+    await open();
+    await this.deps.notifier.send({
+      title: 'Store is open — build your cart',
+      body: 'Add your items in the browser on the Mac, then tap "Cart ready".',
+      deepLink: `orderup://build/${orderId}`,
+      priority: 'high',
+    });
+    return this.deps.store.get(orderId)!;
+  }
+
+  /** Manual mode: the user finished tapping items; read the cart if we can, then review. */
+  async markCartReady(orderId: string): Promise<Order> {
+    const { store, config } = this.deps;
+    const order = store.get(orderId);
+    if (!order) throw new Error(`Unknown order: ${orderId}`);
+    if (order.state !== 'building_cart') {
+      throw new Error(`Order is not building a cart (state: ${order.state})`);
+    }
+    let cart: CartSummary | undefined;
+    let overCap = false;
+    try {
+      cart = await this.deps.automation.readCart();
+      overCap = cart.totalCents > config.MAX_ORDER_CENTS;
+    } catch {
+      // Cart-scraping selectors aren't solved yet — the user reviews the total in the browser.
+      cart = undefined;
+    }
+    const advanced = store.advance(orderId, 'awaiting_confirmation', {
+      cart,
+      overCap,
+      expiresAt: this.expiry(),
+    });
+    await this.deps.notifier.send({
+      title: cart ? `Review your order — ${formatCents(cart.totalCents)}` : 'Cart ready — confirm to place',
+      body: cart
+        ? `${cart.items.map((i) => `${i.quantity}× ${i.name}`).join(', ')} from ${cart.restaurant}${overCap ? ' (over your spending cap!)' : ''}`
+        : 'Review the cart total in the browser, then confirm.',
+      deepLink: `orderup://review/${orderId}`,
+      priority: 'high',
+    });
+    return advanced;
   }
 
   async confirm(orderId: string, acknowledgeOverCap = false): Promise<Order> {
