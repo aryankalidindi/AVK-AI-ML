@@ -23,3 +23,9 @@ Downloaded LMStudio and added gemma4 as a local llm. Again it took around 18.6k 
 
 The planning on this term saved about 5k tokens at 19.9k instead of 24.3k.  
 
+⚙️  /save
+
+(^_^)v Conversation snapshot saved to: /Users/aryankalidindi/.hermes/sessions/saved/hermes_conversation_20260706_165956.json
+
+       Resume the live session with: hermes --resume 20260706_164906_83dbd9
+
