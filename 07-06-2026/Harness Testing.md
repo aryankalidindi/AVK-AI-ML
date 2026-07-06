@@ -6,6 +6,8 @@ https://www.agno.com - Agno is an SDK and runtime for building your own agent pl
 
 https://github.com/omnigent-ai/omnigent -
 
+https://github.com/tinyhumansai/openhuman - 
+
 
 
 
