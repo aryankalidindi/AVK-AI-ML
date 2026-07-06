@@ -18,6 +18,12 @@ https://aider.chat/
 
 https://github.com/huggingface/smolagents
 
+https://www.langchain.com/langgraph
+
+https://github.com/pydantic/pydantic-ai
+
+https://github.com/mastra-ai/mastra
+
 
 
 
