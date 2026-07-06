@@ -44,11 +44,21 @@ if (item) {
   searchTarget = item;
   console.error(`[inspect] landed on: ${page.url()}`);
 
-  // Use the store's item-search box to filter the (virtualized) menu to the item.
-  const search = page.locator('input[aria-label="Item Search"]').first();
-  await search.fill(item);
-  await page.waitForTimeout(3000);
-  console.error(`[inspect] filtered store menu by "${item}"`);
+  // Use the store's item-search box. There are duplicate inputs (sticky/mobile),
+  // so pick the visible one; type with real keys + Enter to execute the search.
+  const search = page.locator('input[aria-label="Item Search"]:visible').first();
+  await search.click();
+  await search.type(item, { delay: 40 });
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(4000);
+  const chickenCount = await page.evaluate(() =>
+    Array.from(document.querySelectorAll('span,div,h3,p,a')).filter((el) =>
+      (el.textContent ?? '').toLowerCase().includes('chicken'),
+    ).length,
+  );
+  console.error(
+    `[inspect] searched "${item}"; url=${page.url()}; elements mentioning "chicken"=${chickenCount}`,
+  );
 }
 
 // tsx/esbuild wraps functions with a __name helper that doesn't exist in the
@@ -95,7 +105,7 @@ const report = await page.evaluate((searchStr: string) => {
   const nameNodes = Array.from(document.querySelectorAll('h1,h2,h3,h4,span,div,a,p')).filter(
     (el) => {
       const txt = (el.textContent ?? '').trim().toLowerCase();
-      return txt.includes(target) && txt.length < 40 && el.children.length <= 1;
+      return txt.includes(target) && txt.length < 60 && el.children.length <= 2;
     },
   );
 
