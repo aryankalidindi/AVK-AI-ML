@@ -30,4 +30,20 @@ describe("createNtfyNotifier", () => {
       notifier.send({ title: "t", body: "b", deepLink: "orderup://x" }),
     ).rejects.toThrow(/502/);
   });
+
+  test("sanitizes non-Latin1 characters in the Title header", async () => {
+    const fetchFn = vi.fn().mockResolvedValue({ ok: true, status: 200 });
+    const notifier = createNtfyNotifier("http://127.0.0.1:8090", "orderup", fetchFn);
+
+    await notifier.send({
+      title: "Review your order — 1× McChicken",
+      body: "1× McChicken from McDonald’s",
+      deepLink: "orderup://review/abc",
+    });
+
+    const init = fetchFn.mock.calls[0][1];
+    expect(init.headers.Title).toBe("Review your order - 1x McChicken");
+    // Body keeps full UTF-8.
+    expect(init.body).toContain("McDonald’s");
+  });
 });
