@@ -20,6 +20,17 @@ interface AutomationOptions {
 const BASE = 'https://www.doordash.com';
 const MAX_CANDIDATES = 10;
 
+/** Case-insensitive matcher tolerant of the punctuation in names like "McDonald's" / "Chick-fil-A". */
+function nameRegex(name: string): RegExp {
+  const words = name
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return new RegExp(words.join('.{0,3}'), 'i');
+}
+
 export function createDoorDashAutomation(
   context: BrowserContext,
   options: AutomationOptions,
@@ -54,16 +65,11 @@ export function createDoorDashAutomation(
     await p.goto(`${BASE}/search/store/${encodeURIComponent(restaurant)}`, {
       waitUntil: 'domcontentloaded',
     });
-    const cards = p.locator(SEL.storeCard);
-    await cards.first().waitFor();
-    const names = await cards.locator(SEL.storeCardName).allTextContents();
-    const match = bestMatch(
-      restaurant,
-      names.map((name, index) => ({ name, index })),
-      (option) => option.name,
-    );
-    if (!match) throw new Error(`No store matching "${restaurant}" in search results`);
-    await cards.nth(match.index).click();
+    // Match the store card by its visible text — store names have no stable
+    // attribute. nameRegex tolerates apostrophes/hyphens ("McDonald's").
+    const card = p.locator(SEL.storeCard).filter({ hasText: nameRegex(restaurant) }).first();
+    await card.waitFor();
+    await card.click();
     await p.waitForLoadState('domcontentloaded');
   }
 
