@@ -34,10 +34,12 @@ let searchTarget = restaurant;
 if (item) {
   // Reproduce searchRestaurant's click, then inspect the menu for the item.
   const link = page.locator(SEL.storeCard).filter({ hasText: nameRegex(restaurant) }).first();
+  await link.waitFor();
   const href = await link.getAttribute('href');
-  console.error(`[inspect] clicking store link href=${href}`);
-  await link.click();
-  await page.waitForURL('**/store/**', { timeout: 20000 }).catch(() => {});
+  console.error(`[inspect] navigating to store href=${href}`);
+  await page.goto(new URL(href!, 'https://www.doordash.com').toString(), {
+    waitUntil: 'domcontentloaded',
+  });
   await page.waitForTimeout(6000);
   searchTarget = item;
   console.error(`[inspect] landed on: ${page.url()}`);

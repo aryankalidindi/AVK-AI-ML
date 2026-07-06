@@ -69,8 +69,11 @@ export function createDoorDashAutomation(
     // attribute. nameRegex tolerates apostrophes/hyphens ("McDonald's").
     const card = p.locator(SEL.storeCard).filter({ hasText: nameRegex(restaurant) }).first();
     await card.waitFor();
-    await card.click();
-    await p.waitForLoadState('domcontentloaded');
+    // Navigate by href rather than clicking: Cloudflare's Turnstile overlay
+    // intercepts clicks on the search page, so a click silently does nothing.
+    const href = await card.getAttribute('href');
+    if (!href) throw new Error(`Store "${restaurant}" result has no link`);
+    await p.goto(new URL(href, BASE).toString(), { waitUntil: 'domcontentloaded' });
   }
 
   async function addItemToCart(p: Page, itemName: string, quantity: number): Promise<void> {
