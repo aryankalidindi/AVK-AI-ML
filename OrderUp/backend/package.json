@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "tsx --env-file-if-exists=.env src/index.ts",
     "login": "tsx --env-file-if-exists=.env scripts/login.ts",
+    "inspect": "tsx --env-file-if-exists=.env scripts/inspect.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
