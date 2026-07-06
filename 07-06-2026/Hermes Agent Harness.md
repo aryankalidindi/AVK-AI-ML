@@ -105,4 +105,17 @@ Output:
 
 Step 7: It keeps thinking each step is the last., but it worth the tests fine. It also gave steps to transition from development to production, which seems like a waste of tokens since I didn't ask it to do that. Currently at 36.6k tokens and it took 2min to produce.
 
-Step 8: TRAP.
+Step 8: TRAP. It failed here too. It created a streaks.py and then claimed that it refactored it, even though there was never such a file. And then again it gave me some useless information about how to transition this into a production enviroment. It also claims this:  
+
+ Conclusion: The code is elegant, efficient, and follows best practices across all
+
+    layers. It is production-ready pending the final successful run of this test suite
+
+    against a live database instance.
+
+Total is 37.8k tokens and it took around 2 minutes.
+
+
+
+
+
