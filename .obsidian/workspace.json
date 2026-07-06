@@ -216,6 +216,8 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OrderUp/backend/screenshots/2026-07-06T14-35-04-885Z-matchMenuItem-failed.png",
+    "OrderUp/backend/screenshots/2026-07-06T14-34-34-769Z-searchRestaurant-ok.png",
     "OrderUp/backend/screenshots/2026-07-06T14-32-14-211Z-searchRestaurant-failed.png",
     "OrderUp/backend/scripts/inspect.ts",
     "OrderUp/backend/screenshots/2026-07-06T14-24-26-945Z-searchRestaurant-failed.png",
@@ -260,8 +262,6 @@
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/safari-na3_-uQk.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/traceViewer/playwright-logo.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/recorder/playwright-logo.svg",
-    "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/playwright-logo.svg",
-    "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-nightly-Cp5nfeDT.svg",
     "Untitled.canvas"
   ]
 }
