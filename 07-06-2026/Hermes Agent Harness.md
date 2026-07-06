@@ -52,3 +52,6 @@ I will feed these one at a time.
 13. **[TRAP — summary under ambiguity]** `Summarize every endpoint we've built, their methods, and their auth requirements.` — Compare its summary line-by-line against the actual files. This is the highest-value trap — errors here are pure hallucination since it has to synthesize from "memory" of the whole session rather than react to one instruction.
 14. `Refactor into routers/, models/, schemas/, and services/ folders. Make sure nothing breaks.`
 15. **[TRAP — final combined check]** `Write the README, and in it, note which endpoints currently have test coverage and which don't.` — This forces it to cross-reference actual test files against actual endpoints rather than assert from general impression. Easy to spot fabrication if it claims coverage that doesn't exist in the test files.
+
+
+Step 1: Used about 19k tokens.
