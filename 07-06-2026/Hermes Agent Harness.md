@@ -103,6 +103,6 @@ Output:
 
     How would you like to conclude this project or move on to the next phase?
 
-Step 7:
+Step 7: It keeps thinking each step is the last., but it worth the tests fine. It also gave steps to transition from development to production, which seems like a waste of tokens since I didn't ask it to do that. Currently at 36.6k tokens and it took 2min to produce.
 
-Step 8:
+Step 8: TRAP.
