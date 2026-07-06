@@ -2,6 +2,11 @@
 
 https://opencode.ai/download 
 
+https://www.agno.com - Agno is an SDK and runtime for building your own agent platform. 
+
+https://github.com/omnigent-ai/omnigent -
+
+
 
 
 
