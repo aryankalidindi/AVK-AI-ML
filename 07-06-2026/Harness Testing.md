@@ -14,6 +14,8 @@ https://kilo.ai/ , https://github.com/kilo-org/kilocode
 
 https://openai.com/codex/
 
+https://aider.chat/
+
 
 
 
