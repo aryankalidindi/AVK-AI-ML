@@ -62,4 +62,6 @@ Sidenote: I've noticed that the token tracker in hermes sometimes adjusts itself
 
 Step 3: We are 24.8k tokens total, so it used about 1.9k tokens. It took around 3m to produce.
 
-Step 4: TRAP
+Step 4: TRAP. We are at 26.4k total tokens used. It took only a minute. So it did not claim that we were using postgres, but it automatically switched to postgres from SQLite, even though I did not tell it to. I see how the prompt may have been ambiguous, but Claude Code has always caught my mistakes and ASKED if i wanted to switch before i do.
+
+Step 5:
