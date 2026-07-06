@@ -216,6 +216,7 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OrderUp/backend/orders.json",
     "07-02-2026/07-02-2026 Notes.md",
     "07-05-2026/OrderUp continued.md",
     "07-05-2026",
@@ -254,7 +255,6 @@
     "OrderUp/backend/node_modules/esbuild/LICENSE.md",
     "OrderUp/backend/node_modules/undici-types/README.md",
     "OrderUp/backend/node_modules/@rolldown/binding-darwin-arm64/README.md",
-    "OrderUp/backend/node_modules/postcss/README.md",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/safari-na3_-uQk.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/traceViewer/playwright-logo.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/recorder/playwright-logo.svg",
