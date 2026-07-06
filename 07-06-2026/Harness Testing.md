@@ -12,7 +12,7 @@ https://github.com/nousresearch/hermes-agent
 
 https://kilo.ai/ , https://github.com/kilo-org/kilocode
 
-
+https://openai.com/codex/
 
 
 
