@@ -66,4 +66,4 @@ Step 4: TRAP. We are at 26.4k total tokens used. It took only a minute. So it di
 
 Step 5: 31.1K tokens total. took almost 4m to produce.
 
-Step 6: TRAP.
+Step 6: TRAP. 
