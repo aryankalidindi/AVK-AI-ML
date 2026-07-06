@@ -5,6 +5,7 @@ import type { OrderStore } from './orders/store.js';
 import type { Candidate, CartSummary, Order, ParsedRequest, RankedSuggestion } from './types.js';
 
 export interface OrchestratorConfig {
+  CART_MODE: 'manual' | 'auto';
   CONFIDENCE_THRESHOLD: number;
   MAX_ORDER_CENTS: number;
   DRY_RUN: boolean;
@@ -25,7 +26,7 @@ export interface OrchestratorDeps {
   now?: () => Date;
 }
 
-const EXPIRABLE_STATES = ['clarifying', 'suggesting', 'awaiting_confirmation'];
+const EXPIRABLE_STATES = ['clarifying', 'suggesting', 'building_cart', 'awaiting_confirmation'];
 
 export class Orchestrator {
   private inFlight: Promise<unknown> = Promise.resolve();
