@@ -15,6 +15,9 @@ const envSchema = z
     ANTHROPIC_MODEL: z.string().default('claude-opus-4-8'),
     GEMINI_API_KEY: z.string().optional(),
     GEMINI_MODEL: z.string().default('gemini-2.5-flash'),
+    // 'manual': open the store, user taps items, then hits cart-ready (robust today).
+    // 'auto': fully scripted add-to-cart (kept for when the menu selectors are solved).
+    CART_MODE: z.enum(['manual', 'auto']).default('manual'),
     CONFIDENCE_THRESHOLD: z.coerce.number().min(0).max(1).default(0.8),
     MAX_ORDER_CENTS: z.coerce.number().int().positive().default(5000),
     DRY_RUN: booleanString('true'),

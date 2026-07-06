@@ -5,7 +5,7 @@ const ALLOWED: Record<OrderState, OrderState[]> = {
   parsing: ['clarifying', 'suggesting', 'building_cart', 'failed'],
   clarifying: ['parsing', 'cancelled', 'expired', 'failed'],
   suggesting: ['building_cart', 'cancelled', 'expired', 'failed'],
-  building_cart: ['awaiting_confirmation', 'failed'],
+  building_cart: ['awaiting_confirmation', 'cancelled', 'expired', 'failed'],
   awaiting_confirmation: ['placing', 'cancelled', 'expired'],
   placing: ['placed', 'failed'],
   placed: [],

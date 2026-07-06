@@ -6,6 +6,11 @@ import { extractCandidates, extractCartSummary } from './extract.js';
 import { SEL } from './selectors.js';
 
 export interface DoorDashAutomation {
+  // Manual mode: navigate to the store and hand off to the user to tap items.
+  openStoreForSpecific(parsed: ParsedRequest): Promise<void>;
+  openStoreForCandidate(candidate: Candidate): Promise<void>;
+  readCart(): Promise<CartSummary>;
+  // Auto mode (kept for when menu/cart selectors are solved).
   buildCartForSpecific(parsed: ParsedRequest): Promise<CartSummary>;
   discover(dish: string): Promise<Candidate[]>;
   buildCartForCandidate(candidate: Candidate, quantity: number): Promise<CartSummary>;
@@ -100,6 +105,21 @@ export function createDoorDashAutomation(
   }
 
   return {
+    async openStoreForSpecific(parsed: ParsedRequest): Promise<void> {
+      if (!parsed.restaurant) {
+        throw new StepError('searchRestaurant', 'Parsed request has no restaurant');
+      }
+      await runStep('searchRestaurant', (p) => searchRestaurant(p, parsed.restaurant!));
+    },
+
+    async openStoreForCandidate(candidate: Candidate): Promise<void> {
+      await runStep('searchRestaurant', (p) => searchRestaurant(p, candidate.restaurant));
+    },
+
+    async readCart(): Promise<CartSummary> {
+      return runStep('readCart', (p) => readCart(p));
+    },
+
     async buildCartForSpecific(parsed: ParsedRequest): Promise<CartSummary> {
       if (!parsed.restaurant) {
         throw new StepError('searchRestaurant', 'Parsed request has no restaurant');
