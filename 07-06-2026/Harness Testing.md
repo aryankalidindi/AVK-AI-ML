@@ -16,6 +16,8 @@ https://openai.com/codex/
 
 https://aider.chat/
 
+https://github.com/huggingface/smolagents
+
 
 
 
