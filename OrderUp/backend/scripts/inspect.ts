@@ -43,6 +43,34 @@ if (item) {
   await page.waitForTimeout(6000);
   searchTarget = item;
   console.error(`[inspect] landed on: ${page.url()}`);
+
+  // Report any search inputs on the store page (a store search box is the
+  // cleanest way to reach one item on a virtualized menu).
+  const inputs = await page.evaluate(() =>
+    Array.from(document.querySelectorAll('input')).map((el) => ({
+      testid: el.getAttribute('data-testid') ?? '',
+      placeholder: el.getAttribute('placeholder') ?? '',
+      ariaLabel: el.getAttribute('aria-label') ?? '',
+    })),
+  );
+  console.error('[inspect] inputs on store page:', JSON.stringify(inputs));
+
+  // Scroll the virtualized menu until the item renders, then stop there.
+  let found = false;
+  for (let i = 0; i < 25 && !found; i += 1) {
+    found = await page.evaluate(
+      (t: string) =>
+        Array.from(document.querySelectorAll('*')).some(
+          (el) => (el.textContent ?? '').toLowerCase().includes(t.toLowerCase()),
+        ),
+      item,
+    );
+    if (!found) {
+      await page.mouse.wheel(0, 1400);
+      await page.waitForTimeout(500);
+    }
+  }
+  console.error(`[inspect] item "${item}" rendered after scrolling: ${found}`);
 }
 
 // tsx/esbuild wraps functions with a __name helper that doesn't exist in the
