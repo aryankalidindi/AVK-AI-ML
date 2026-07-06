@@ -18,7 +18,8 @@ describe("createNtfyNotifier", () => {
     expect(url).toBe("http://127.0.0.1:8090/orderup");
     expect(init.method).toBe("POST");
     expect(init.body).toBe("1× McChicken from McDonald's");
-    expect(init.headers.Title).toBe("Review your order — $8.42");
+    // Title is sanitized to Latin-1 (— becomes -); body keeps UTF-8.
+    expect(init.headers.Title).toBe("Review your order - $8.42");
     expect(init.headers.Click).toBe("orderup://review/abc");
     expect(init.headers.Priority).toBe("high");
   });
