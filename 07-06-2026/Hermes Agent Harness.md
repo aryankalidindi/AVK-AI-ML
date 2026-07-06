@@ -18,4 +18,8 @@ Here is the output it gave from that prompt
 
 
 
+Downloaded LMStudio and added gemma4 as a local llm. Again it took around 18.6k tokens to fully load. Will now re-try the earlier prompt.
+
+
+
 
