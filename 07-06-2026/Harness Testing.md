@@ -8,6 +8,8 @@ https://github.com/omnigent-ai/omnigent -
 
 https://github.com/tinyhumansai/openhuman - 
 
+https://github.com/nousresearch/hermes-agent
+
 
 
 
