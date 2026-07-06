@@ -54,4 +54,4 @@ I will feed these one at a time.
 15. **[TRAP — final combined check]** `Write the README, and in it, note which endpoints currently have test coverage and which don't.` — This forces it to cross-reference actual test files against actual endpoints rather than assert from general impression. Easy to spot fabrication if it claims coverage that doesn't exist in the test files.
 
 
-Step 1: Used about 19k tokens.
+Step 1: Used about 21.2k tokens. Took around 3m to produce.
