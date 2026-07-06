@@ -59,6 +59,42 @@ if (item) {
   console.error(
     `[inspect] searched "${item}"; url=${page.url()}; elements mentioning "chicken"=${chickenCount}`,
   );
+
+  // Add the best-matching item card via its quick-add button, then open the cart
+  // and dump its structure — this captures the remaining cart selectors.
+  const card = page.locator('[data-testid="MenuItem"]').filter({ hasText: nameRegex(item) }).first();
+  await card.waitFor({ timeout: 15000 });
+  console.error(`[inspect] matched menu item card text: ${(await card.innerText()).slice(0, 60)}`);
+  const quickAdd = card.locator('[data-testid="quick-add-button"], button[aria-label="Add item to cart"]').first();
+  await quickAdd.click();
+  await page.waitForTimeout(3000);
+  await page.locator('[data-testid="OrderCartIconButton"]').first().click();
+  await page.waitForTimeout(4000);
+
+  await page.evaluate('globalThis.__name = globalThis.__name || function (f) { return f; };');
+  const cart = await page.evaluate(() => {
+    const testids: Record<string, number> = {};
+    for (const el of Array.from(document.querySelectorAll('[data-testid]'))) {
+      const v = el.getAttribute('data-testid') ?? '';
+      // Keep cart/checkout/order/subtotal/total-ish testids.
+      if (/cart|order|subtotal|total|fee|checkout|line|quantity|price/i.test(v)) {
+        testids[v] = (testids[v] ?? 0) + 1;
+      }
+    }
+    // Any element whose text is a $ amount, with its testid, to locate totals.
+    const money = Array.from(document.querySelectorAll('span,div,p'))
+      .filter((el) => /^\$\d+\.\d{2}$/.test((el.textContent ?? '').trim()) && el.children.length === 0)
+      .slice(0, 20)
+      .map((el) => ({
+        text: (el.textContent ?? '').trim(),
+        testid: el.getAttribute('data-testid') ?? '',
+        parentTestid: el.parentElement?.getAttribute('data-testid') ?? '',
+      }));
+    return { cartTestids: testids, moneyNodes: money };
+  });
+  console.log(JSON.stringify({ cart }, null, 2));
+  await context.close();
+  process.exit(0);
 }
 
 // tsx/esbuild wraps functions with a __name helper that doesn't exist in the
