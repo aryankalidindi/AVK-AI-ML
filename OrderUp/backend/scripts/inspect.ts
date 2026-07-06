@@ -44,33 +44,11 @@ if (item) {
   searchTarget = item;
   console.error(`[inspect] landed on: ${page.url()}`);
 
-  // Report any search inputs on the store page (a store search box is the
-  // cleanest way to reach one item on a virtualized menu).
-  const inputs = await page.evaluate(() =>
-    Array.from(document.querySelectorAll('input')).map((el) => ({
-      testid: el.getAttribute('data-testid') ?? '',
-      placeholder: el.getAttribute('placeholder') ?? '',
-      ariaLabel: el.getAttribute('aria-label') ?? '',
-    })),
-  );
-  console.error('[inspect] inputs on store page:', JSON.stringify(inputs));
-
-  // Scroll the virtualized menu until the item renders, then stop there.
-  let found = false;
-  for (let i = 0; i < 25 && !found; i += 1) {
-    found = await page.evaluate(
-      (t: string) =>
-        Array.from(document.querySelectorAll('*')).some(
-          (el) => (el.textContent ?? '').toLowerCase().includes(t.toLowerCase()),
-        ),
-      item,
-    );
-    if (!found) {
-      await page.mouse.wheel(0, 1400);
-      await page.waitForTimeout(500);
-    }
-  }
-  console.error(`[inspect] item "${item}" rendered after scrolling: ${found}`);
+  // Use the store's item-search box to filter the (virtualized) menu to the item.
+  const search = page.locator('input[aria-label="Item Search"]').first();
+  await search.fill(item);
+  await page.waitForTimeout(3000);
+  console.error(`[inspect] filtered store menu by "${item}"`);
 }
 
 // tsx/esbuild wraps functions with a __name helper that doesn't exist in the
@@ -101,32 +79,52 @@ const report = await page.evaluate((searchStr: string) => {
   out.testids = filterAttrs(attrCounts['data-testid']);
   out.anchorIds = filterAttrs(attrCounts['data-anchor-id']);
 
-  // Elements whose text contains the target word — report their tag + attrs + a clickable ancestor.
-  const matches = Array.from(document.querySelectorAll('h1,h2,h3,h4,span,div,a,button,p'))
-    .filter((el) => (el.textContent ?? '').toLowerCase().includes(searchStr.toLowerCase()))
-    .slice(0, 4)
-    .map((el) => {
-      const self: Record<string, string> = { tag: el.tagName.toLowerCase() };
-      for (const a of Array.from(el.attributes)) {
-        if (a.name.startsWith('data-') || a.name === 'role' || a.name === 'aria-label') {
-          self[a.name] = a.value;
-        }
+  const attrsOf = (el: Element): Record<string, string> => {
+    const at: Record<string, string> = { tag: el.tagName.toLowerCase() };
+    for (const a of Array.from(el.attributes)) {
+      if (a.name.startsWith('data-') || a.name === 'role' || a.name === 'aria-label') {
+        at[a.name] = a.value;
       }
-      const chain: Array<Record<string, string>> = [];
-      let node: Element | null = el;
-      for (let i = 0; i < 8 && node; i += 1) {
-        const at: Record<string, string> = { tag: node.tagName.toLowerCase() };
-        for (const a of Array.from(node.attributes)) {
-          if (a.name.startsWith('data-') || a.name === 'role' || a.name === 'aria-label') {
-            at[a.name] = a.value;
-          }
-        }
-        chain.push(at);
-        node = node.parentElement;
-      }
-      return { text: (el.textContent ?? '').trim().slice(0, 60), self, ancestors: chain };
-    });
-  out.matches = matches.length ? matches : `No element text contains "${searchStr}"`;
+    }
+    return at;
+  };
+
+  // Find leaf-ish elements whose OWN text is the item name (short, no big card),
+  // then walk up to the item card and report any add-button inside that card.
+  const target = searchStr.toLowerCase();
+  const nameNodes = Array.from(document.querySelectorAll('h1,h2,h3,h4,span,div,a,p')).filter(
+    (el) => {
+      const txt = (el.textContent ?? '').trim().toLowerCase();
+      return txt.includes(target) && txt.length < 40 && el.children.length <= 1;
+    },
+  );
+
+  const cards = nameNodes.slice(0, 3).map((nameEl) => {
+    // Walk up to the nearest ancestor that carries a data-testid (the item card).
+    let card: Element | null = nameEl;
+    const chain: Array<Record<string, string>> = [];
+    for (let i = 0; i < 8 && card; i += 1) {
+      chain.push(attrsOf(card));
+      if (card.getAttribute('data-testid')) break;
+      card = card.parentElement;
+    }
+    // Buttons inside that card (quick-add etc.) and any $ price text within it.
+    const scope = card ?? nameEl;
+    const buttons = Array.from(scope.querySelectorAll('button')).map((b) => ({
+      testid: b.getAttribute('data-testid') ?? '',
+      ariaLabel: b.getAttribute('aria-label') ?? '',
+      text: (b.textContent ?? '').trim().slice(0, 30),
+    }));
+    const priceText = ((scope.textContent ?? '').match(/\$\d+(?:\.\d{2})?/) ?? [])[0] ?? null;
+    return {
+      name: (nameEl.textContent ?? '').trim(),
+      cardTestid: card?.getAttribute('data-testid') ?? '(none up 8 levels)',
+      ancestorChain: chain,
+      buttonsInCard: buttons,
+      priceInCard: priceText,
+    };
+  });
+  out.itemCards = cards.length ? cards : `No leaf node text matches "${searchStr}"`;
   return out;
 }, searchTarget);
 
