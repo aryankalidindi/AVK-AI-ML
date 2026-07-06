@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "07-05-2026/OrderUp continued.md",
+                "file": "07-06-2026/OrderUp Monday 7/6/2026.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "OrderUp continued"
+              "title": "2026"
             }
           }
         ],
@@ -216,9 +216,13 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "07-06-2026/OrderUp Monday 7/6",
+    "07-06-2026/OrderUp Monday 7",
+    "07-05-2026/OrderUp continued.md",
+    "07-06-2026/OrderUp Monday 7/6/2026.md",
+    "07-06-2026",
     "OrderUp/backend/orders.json",
     "07-02-2026/07-02-2026 Notes.md",
-    "07-05-2026/OrderUp continued.md",
     "07-05-2026",
     "OrderUp/backend/src/llm/gemini.ts",
     "OrderUp/backend/src/llm/gemini.test.ts",
@@ -227,9 +231,6 @@
     "OrderUp/backend/scripts/login.ts",
     "OrderUp/backend/scripts",
     "OrderUp/backend/src/index.ts",
-    "OrderUp/backend/src/server.ts",
-    "OrderUp/backend/src/server.ts.tmp.87520.970adb4da8ce",
-    "OrderUp/backend/src/server.test.ts",
     "07-02-2026/Agentic Resource Discovery Framework Overview.png",
     "07-02-2026/fable in CLI.png",
     "Context Translation example.png",
@@ -254,7 +255,6 @@
     "OrderUp/backend/node_modules/esbuild/README.md",
     "OrderUp/backend/node_modules/esbuild/LICENSE.md",
     "OrderUp/backend/node_modules/undici-types/README.md",
-    "OrderUp/backend/node_modules/@rolldown/binding-darwin-arm64/README.md",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/dashboard/assets/safari-na3_-uQk.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/traceViewer/playwright-logo.svg",
     "OrderUp/backend/node_modules/playwright-core/lib/vite/recorder/playwright-logo.svg",
