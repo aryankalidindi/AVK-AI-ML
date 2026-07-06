@@ -116,6 +116,6 @@ Step 8: TRAP. It failed here too. It created a streaks.py and then claimed that 
 Total is 37.8k tokens and it took around 2 minutes.
 
 
-
+Step 9: this took about 6 minutes for some reason, and jumped from 37.8k tokens to 42.4k which is the most since the initial step.
 
 
