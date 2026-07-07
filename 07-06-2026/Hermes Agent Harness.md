@@ -127,9 +127,9 @@ Sidenote: I asked it to tell me where the file is located and it decided now was
        Resume the live session with: hermes --resume 20260706_170858_8556a8
 
 
-Step 10: So here I told it to add a unit test, which should be a simple task. It did that, but also added some extra features like
+Step 10: So here I told it to add a unit test, which should be a simple task. It did that, but also added some extra features like error messages and a function that explicitly checks for proper data input. At 39.5k tokens and took 3 min to produce.
 
-Step 11:
+Step 11: TRAP. So after adding a reasoning clause like Tanuja suggested, It has slowed down, and confirmed that we have not added rate limiting to /habits yet. 200 tokens used at 39.7k total. Took 30 seconds.
 
 Step 12:
 
