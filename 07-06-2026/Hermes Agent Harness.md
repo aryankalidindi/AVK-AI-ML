@@ -138,3 +138,10 @@ Step 13:
 Step 14:
 
 Step 15:
+
+
+
+[[Session Notes]]
+Track Hallucination levels based on prompt levels (tier1, 2, 3, etc)
+
+Determine which metrics are actually applicable for blog and actual use.
