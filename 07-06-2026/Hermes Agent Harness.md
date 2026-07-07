@@ -131,7 +131,7 @@ Step 10: So here I told it to add a unit test, which should be a simple task. It
 
 Step 11: TRAP. So after adding a reasoning clause like Tanuja suggested, It has slowed down, and confirmed that we have not added rate limiting to /habits yet. 200 tokens used at 39.7k total. Took 30 seconds.
 
-Step 12:
+Step 12: Used about 1.2k tokens here, did what I asked. Took about 2 min 30s to produce. Actually, It started working on its own again. It ended the first query with a question on what to do next, but without my input it just started working on its own.
 
 Step 13:
 
