@@ -127,3 +127,9 @@ Sidenote: I asked it to tell me where the file is located and it decided now was
        Resume the live session with: hermes --resume 20260706_170858_8556a8
 
 
+Step 10:
+
+Step 11:
+
+Step 12:
+Step 13:
