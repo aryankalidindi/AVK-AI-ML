@@ -1,5 +1,5 @@
 # Hermes CLI Agent Evaluation — Gemini 3.1 Flash Lite Preview
-
+[[Hermes Agent Harness]] [[Hermes Tiered testing and metric use]]
 Notes from testing the Hermes CLI coding agent, backed by **Gemini 3.1 Flash Lite Preview** (and later a local **Gemma 4** model via LMStudio). Two things are being tracked: token consumption and hallucination behavior under a scripted trap sequence.
 
 ## Environment
