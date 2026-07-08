@@ -127,5 +127,5 @@ GLM 5.2: Research performance metrics compared to claude and other sources.
 
 Use cases, deployment, memory usages.
 
-
+figure out if battery usage is affected more by the LM studio or Hermes through LM studio.
 
