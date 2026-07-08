@@ -67,4 +67,57 @@ subprocess.TimeoutExpired: Command '['hermes', '-z', 'Add pagination to the GET 
 aryankalidindi@Aryans-MacBook-Pro-2 harness %
 
 
-There
+
+SEPERATE:
+
+
+
+aryankalidindi@Aryans-MacBook-Pro-2 hermes_scaffold % cd harness
+
+python3 run_harness.py
+
+[1/9] Running t1-01 (tier 1, 1 turn(s))
+
+  [TIMEOUT] t1-01 turn 1 did not respond within 300s, logging and moving on
+
+[2/9] Running t1-02 (tier 1, 1 turn(s))
+
+  [TIMEOUT] t1-02 turn 1 did not respond within 300s, logging and moving on
+
+[3/9] Running t1-03 (tier 1, 1 turn(s))
+
+[4/9] Running t2-01 (tier 2, 1 turn(s))
+
+  [TIMEOUT] t2-01 turn 1 did not respond within 300s, logging and moving on
+
+[5/9] Running t2-02 (tier 2, 1 turn(s))
+
+  [TIMEOUT] t2-02 turn 1 did not respond within 300s, logging and moving on
+
+[6/9] Running t2-03 (tier 2, 1 turn(s))
+
+[7/9] Running t3-01 (tier 3, 1 turn(s))
+
+  [TIMEOUT] t3-01 turn 1 did not respond within 300s, logging and moving on
+
+[8/9] Running t3-02 (tier 3, 1 turn(s))
+
+  [TIMEOUT] t3-02 turn 1 did not respond within 300s, logging and moving on
+
+[9/9] Running t3-03 (tier 3, 1 turn(s))
+
+  
+
+Done. Raw transcripts saved to /Users/aryankalidindi/Desktop/hermes scaffold/hermes_scaffold/harness/transcripts/, results logged to /Users/aryankalidindi/Desktop/hermes scaffold/hermes_scaffold/harness/results.csv
+
+System-layer metrics (latency, tokens, tool calls, retries) were captured automatically where available.
+
+Next: run 'python label_results.py' to fill in the Outcome/Fidelity/Risk fields for each row.
+
+aryankalidindi@Aryans-MacBook-Pro-2 harness %
+
+
+
+
+
+
