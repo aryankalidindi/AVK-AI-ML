@@ -145,3 +145,9 @@ Step 15:
 Track Hallucination levels based on prompt levels (tier1, 2, 3, etc)
 
 Determine which metrics are actually applicable for blog and actual use.
+
+
+
+So i created a python script that will allow me to run multiple prompts at once at varied tiers. It will also automatically record all the metrics for me. 
+
+I have noticed we are prompt 3/11 and my Macbook battery has dropped from 33% to 22 within 10 minutes.
