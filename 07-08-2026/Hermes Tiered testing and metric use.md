@@ -121,3 +121,11 @@ aryankalidindi@Aryans-MacBook-Pro-2 harness %
 
 
 
+
+
+GLM 5.2: Research performance metrics compared to claude and other sources.
+
+Use cases, deployment, memory usages.
+
+
+
