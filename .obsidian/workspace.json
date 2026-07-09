@@ -39,12 +39,10 @@
             "id": "54b0aa7dcf278b50",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "Translation Error.png"
-              },
-              "icon": "lucide-image",
-              "title": "Translation Error"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ],
@@ -214,6 +212,10 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "OrderUp/backend/node_modules/@standard-schema/spec/README.md",
+    "07-09-2026/FINDINGS.md",
+    "Translation Error.png",
+    "07-09-2026",
     "07-06-2026/Harness Testing.md",
     "07-08-2026/Hermes Tiered testing and metric use.md",
     "07-08-2026/README.md",
@@ -239,11 +241,9 @@
     "07-06-2026/OrderUp Monday 7/6",
     "07-06-2026/OrderUp Monday 7",
     "07-05-2026/OrderUp continued.md",
-    "07-06-2026",
     "07-02-2026/07-02-2026 Notes.md",
     "OrderUp/backend/README.md",
     "07-02-2026/Agentic Resource Discovery Framework Overview.png",
-    "07-02-2026/fable in CLI.png",
     "OrderUp/backend/node_modules/@esbuild/darwin-arm64/README.md",
     "OrderUp/backend/node_modules/typescript/SECURITY.md",
     "OrderUp/backend/node_modules/typescript/README.md",
@@ -258,8 +258,6 @@
     "OrderUp/backend/node_modules/chai/README.md",
     "OrderUp/backend/node_modules/picomatch/README.md",
     "OrderUp/backend/node_modules/es-module-lexer/README.md",
-    "OrderUp/backend/node_modules/@types/chai/README.md",
-    "OrderUp/backend/node_modules/obug/README.md",
     "Untitled.canvas"
   ]
 }
