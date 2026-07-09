@@ -39,14 +39,12 @@
             "id": "54b0aa7dcf278b50",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "07-06-2026/Harness Testing.md",
-                "mode": "source",
-                "source": false
+                "file": "Translation Error.png"
               },
-              "icon": "lucide-file",
-              "title": "Harness Testing"
+              "icon": "lucide-image",
+              "title": "Translation Error"
             }
           }
         ],
@@ -216,12 +214,12 @@
   },
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
+    "07-06-2026/Harness Testing.md",
     "07-08-2026/Hermes Tiered testing and metric use.md",
     "07-08-2026/README.md",
     "07-06-2026/Hermes Agent Harness.md",
     "07-07-2026/Session Notes.md",
     "07-08-2026",
-    "07-06-2026/Harness Testing.md",
     "07-07-2026",
     "OpenCodeHarnessTest",
     "OpenCode Harness Test",
