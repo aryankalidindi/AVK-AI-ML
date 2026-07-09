@@ -136,4 +136,7 @@ Hermes: how many tokens if u remove all the skills, why do the token ranges vary
 
 
 
+nemotron models
+
+
 
