@@ -129,3 +129,11 @@ Use cases, deployment, memory usages.
 
 figure out if battery usage is affected more by the LM studio or Hermes through LM studio.
 
+
+
+
+Hermes: how many tokens if u remove all the skills, why do the token ranges vary wildly. What are ways we can reduce tokens
+
+
+
+
