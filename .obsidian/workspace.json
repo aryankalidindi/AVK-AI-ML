@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "07-10-2026/Nemotron 3 Nano 4b.md",
+                "file": "Testing Nemotron 3 Nano 4B for Coding Hallucinations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Nemotron 3 Nano 4b"
+              "title": "Testing Nemotron 3 Nano 4B for Coding Hallucinations"
             }
           }
         ],
@@ -217,9 +217,10 @@
   "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
     "Testing Hermes as a Coding Agent Confidence vs Correctness.md",
+    "New Work Note Template.md",
     "Testing Nemotron 3 Nano 4B for Coding Hallucinations.md",
-    "07-10-2026/Daily Note.md",
     "07-10-2026/Nemotron 3 Nano 4b.md",
+    "07-10-2026/Daily Note.md",
     "stress_test_results.csv",
     "07-10-2026/stress_test_results.csv",
     "07-08-2026/Hermes Tiered testing and metric use.md",
@@ -261,7 +262,6 @@
     "OrderUp/backend/node_modules/@vitest/utils/README.md",
     "OrderUp/backend/node_modules/vite/README.md",
     "OrderUp/backend/node_modules/vite/LICENSE.md",
-    "OrderUp/backend/node_modules/pathe/README.md",
     "Untitled.canvas"
   ]
 }
