@@ -58,3 +58,8 @@ The reason this repo is a good AI-debugging playground: the bugs aren't algorith
 create a diagram where you can explain our ideas (like a flowchart).    Explain how it works in the background. 
 
 Should show the actual code and how an actual human would solve it with a flowchart. And then we are expecting the LLM to follow the same logic or enhance the logic. Compare how the LLM solves it compared to how you are supposed to.
+
+
+
+
+Focus on the differences and similarities between prompts. Like which has more business.
