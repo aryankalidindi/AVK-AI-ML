@@ -62,4 +62,6 @@ Should show the actual code and how an actual human would solve it with a flowch
 
 
 
+
+implement a more complex bug where it thinks it solved but it didnt actually solve it.
 Focus on the differences and similarities between prompts. Like which has more business.
