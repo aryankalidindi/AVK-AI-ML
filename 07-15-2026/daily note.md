@@ -51,3 +51,10 @@ This is the **front-end web UI**, and it's where the bug lives. It's the modern,
 **How the two connect:** you run ACA's dev server at `localhost:4200`; it proxies API calls to ACS at `localhost:8080`. Log in with `admin` / `admin`. Without the backend, ACA loads but every operation fails — which is why getting the whole stack running was the first task.
 
 The reason this repo is a good AI-debugging playground: the bugs aren't algorithm puzzles, they're **plausible business-app defects** in real document-management operations (copy, move, delete, permissions, versioning) that span multiple layers — UI action → service → API → backend — so finding them requires understanding how the whole flow fits together, not just reading one function.
+
+
+
+
+create a diagram where you can explain our ideas (like a flowchart).    Explain how it works in the background. 
+
+Should show the actual code and how an actual human would solve it with a flowchart. And then we are expecting the LLM to follow the same logic or enhance the logic. Compare how the LLM solves it compared to how you are supposed to.
