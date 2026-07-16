@@ -7,4 +7,4 @@ Test Theory about if adding edge cases to context/prompts will produce better ou
 Weekly hours are logged and sp
 
 
-;ist of associates and hours in a seperate excel. Need to populate into rohit's excel with custom macros. this splits them into separate invoices. this needs to be sent out
+list of associates and hours in a seperate excel. Need to populate into rohit's excel with custom macros. this splits them into separate invoices. this needs to be sent out. Should be like a dashboard to validate and he can just click.
