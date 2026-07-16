@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "07-13-2026/Daily notes.md",
+                "file": "07-16-2026/Daily notes.md",
                 "mode": "source",
                 "source": false
               },
@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -228,11 +228,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "84b55ebef7bc312d",
+  "active": "54b0aa7dcf278b50",
   "lastOpenFiles": [
-    "07-15-2026",
+    "07-16-2026",
     "07-13-2026/Daily notes.md",
+    "07-16-2026/Daily notes.md",
     "07-15-2026/daily note.md",
+    "07-15-2026",
     "07-13-2026",
     "Testing Nemotron 3 Nano 4B for Coding Hallucinations.md",
     "Testing Hermes as a Coding Agent Confidence vs Correctness.md",
@@ -255,7 +257,6 @@
     "07-07-2026",
     "OpenCodeHarnessTest",
     "OpenCode Harness Test",
-    "untitled folder",
     "AGENTS.md",
     "07-06-2026/OrderUp Monday 7/6/2026.md",
     "OrderUp/backend/screenshots/2026-07-06T15-12-46-336Z-readCart-failed.png",
@@ -275,7 +276,6 @@
     "OrderUp/backend/node_modules/typescript/README.md",
     "OrderUp/backend/node_modules/vitest/README.md",
     "OrderUp/backend/node_modules/vitest/LICENSE.md",
-    "OrderUp/backend/node_modules/tsx/README.md",
     "Untitled.canvas"
   ]
 }
